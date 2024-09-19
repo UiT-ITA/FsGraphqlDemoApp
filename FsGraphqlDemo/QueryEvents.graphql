@@ -1,0 +1,31 @@
+﻿query QueryStudentEvents($institusjon: String!, $after: String) {
+    studenthendelser(
+        filter: {
+            eierInstitusjonsnummer: $institusjon
+            hendelsestype: [SEMESTERREGISTRERT]
+        }
+        first: 1000
+        after: $after
+    ) {
+        nodes {
+            id
+            tidspunkt
+            hendelsestype
+            ... on StudentSemesterregistrert {
+                id
+                hendelsestype
+                tidspunkt
+                student {
+                    ...studentcardinfo
+                }
+            }
+        }
+        pageInfo {
+            hasPreviousPage
+            startCursor
+            endCursor
+            hasNextPage
+        }
+        totalCount
+    }
+}

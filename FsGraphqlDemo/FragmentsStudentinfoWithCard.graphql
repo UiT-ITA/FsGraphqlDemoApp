@@ -1,0 +1,26 @@
+﻿fragment studentcardinfo on StudentVedLarested {
+    id
+    feideBruker
+    lanetakerId
+    studentnummer
+    personProfil {
+        fodselsnummer
+    }
+    navn {
+        fornavn
+		etternavn
+    }
+    studentkort {
+        id
+        studentkortnummer
+        status {
+            id
+            kode
+            aktivtKort
+        }
+        gyldighetsperiode {
+            fraDato
+            tilDato
+        }
+    }
+}

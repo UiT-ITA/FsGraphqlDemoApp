@@ -1,0 +1,27 @@
+query QueryStudents($eierInstitusjonsnummer: String!, $after: String) {
+    studenter(
+        filter: { eierInstitusjonsnummer: $eierInstitusjonsnummer }
+        first: 1000
+        after: $after
+    ) {
+        nodes {
+            ...studentinfo
+            programStudieretter {
+                nodes {
+                    kull {
+                        id
+                        erAktiv
+                        skalEksporteresTilLms
+                        lmsRomkode
+                    }
+                }
+            }
+        }
+        pageInfo {
+            hasPreviousPage
+            hasNextPage
+            startCursor
+            endCursor
+        }
+    }
+}

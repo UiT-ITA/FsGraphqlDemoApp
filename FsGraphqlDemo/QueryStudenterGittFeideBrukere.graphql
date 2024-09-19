@@ -1,0 +1,11 @@
+query QueryStudentsUsingFeide(
+    $eierInstitusjonsnummer: String!
+    $feideBrukere: [String!]!
+) {
+    studenterGittFeideBrukere(
+        eierInstitusjonsnummer: $eierInstitusjonsnummer
+        feideBrukere: $feideBrukere
+    ) {
+        ...studentcardinfo
+    }
+}

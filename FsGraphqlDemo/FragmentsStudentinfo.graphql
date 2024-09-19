@@ -1,0 +1,13 @@
+fragment studentinfo on StudentVedLarested {
+    id
+    feideBruker
+    lanetakerId
+    studentnummer
+    personProfil {
+        fodselsnummer
+    }
+    navn {
+        fornavn
+		etternavn
+    }
+}

@@ -1,0 +1,55 @@
+query QuerySemesterRegistreringer(
+    $institusjon: String!
+    $termin: [SemesterregistreringsterminInput!]
+    $studentnumre: [String!]
+    $after: String
+) {
+    semesterregistreringer(
+        filter: {
+            eierInstitusjonsnummer: $institusjon
+            terminer: $termin
+            studentnumre: $studentnumre
+            erSemesterregistrert: true
+            harBetaltSemesteravgift: true
+        }
+        after: $after
+        first: 1000
+    ) {
+        edges {
+            node {
+                student {
+                    id
+                    studentnummer
+                    lanetakerId
+                    feideBruker
+                    personProfil {
+                        fodselsnummer
+                    }
+                    navn {
+                        fornavn
+                        etternavn
+                    }
+                    studentkort {
+                        id
+                        studentkortnummer
+                        status {
+                            id
+                            kode
+                            aktivtKort
+                        }
+                        gyldighetsperiode {
+                            fraDato
+                            tilDato
+                        }
+                    }
+                }
+            }
+        }
+        pageInfo {
+            hasPreviousPage
+            hasNextPage
+            startCursor
+            endCursor
+        }
+    }
+}
