@@ -2,9 +2,7 @@
 
 public enum Verbosity
 {
-    Detailed,
-    Diagnostic,
-    Minimal,
-    Normal,
     Quiet,
+    Normal,
+    Detailed,
 }
