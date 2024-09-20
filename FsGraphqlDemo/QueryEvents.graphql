@@ -1,7 +1,7 @@
 ﻿query QueryStudentEvents($institusjon: String!, $after: String) {
     studenthendelser(
         filter: {
-            eierInstitusjonsnummer: $institusjon
+            eierOrganisasjonskode: $institusjon
             hendelsestype: [SEMESTERREGISTRERT]
         }
         first: 1000

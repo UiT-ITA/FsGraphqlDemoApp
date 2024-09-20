@@ -1,6 +1,6 @@
 query QueryStudents($eierInstitusjonsnummer: String!, $after: String) {
     studenter(
-        filter: { eierInstitusjonsnummer: $eierInstitusjonsnummer }
+        filter: { eierOrganisasjonskode: $eierInstitusjonsnummer }
         first: 1000
         after: $after
     ) {

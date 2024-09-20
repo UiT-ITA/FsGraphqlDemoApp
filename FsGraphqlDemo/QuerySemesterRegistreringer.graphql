@@ -6,7 +6,7 @@ query QuerySemesterRegistreringer(
 ) {
     semesterregistreringer(
         filter: {
-            eierInstitusjonsnummer: $institusjon
+            eierOrganisasjonskode: $institusjon
             terminer: $termin
             studentnumre: $studentnumre
             erSemesterregistrert: true

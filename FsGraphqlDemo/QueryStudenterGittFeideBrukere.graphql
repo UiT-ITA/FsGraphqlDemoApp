@@ -3,7 +3,7 @@ query QueryStudentsUsingFeide(
     $feideBrukere: [String!]!
 ) {
     studenterGittFeideBrukere(
-        eierInstitusjonsnummer: $eierInstitusjonsnummer
+        eierOrganisasjonskode: $eierInstitusjonsnummer
         feideBrukere: $feideBrukere
     ) {
         ...studentcardinfo
