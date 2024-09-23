@@ -70,3 +70,11 @@ dotnet build
 ```
 .\bin\Debug\net8.0\FsGraphqlDemo.exe checkSemreg  
 ```
+
+### Switch FS endpoints
+
+Use the flag --endpoint to switch between TESt and PROD endpoints. TEST is the default.
+
+```
+.\bin\Debug\net8.0\FsGraphqlDemo.exe feide tle001 --endpoint prod
+```
