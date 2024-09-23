@@ -1493,6 +1493,8 @@ type EmneStudierett implements Node {
   campus: Campus
   "Hvilke undervisningstilpasninger som gjelder\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   undervisningstilpasning: [Undervisningstilpasning!]!
+  "Studenten som har denne studieretten\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  student: StudentVedLarested
 }
 
 input EmneStudieretterFilterInput {
