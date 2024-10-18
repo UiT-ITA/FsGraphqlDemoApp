@@ -267,8 +267,8 @@ enum BeskrivelseSprak {
 
 "Gyldige betalingsformer"
 type Betalingsform {
-  "Navn på betalingsformen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  navn: Betalingsformnavn!
+  "Navn på betalingsformen\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  navnAlleSprak: BetalingsformnavnAlleSprak!
   "Om betalingen er en felleskode\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   erFelleskode: Boolean!
   "Om betalingsformen er i aktiv bruk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -287,9 +287,9 @@ enum BetalingsformVerdier {
   KONTANT
 }
 
-"Navn på en betalingsform"
-type Betalingsformnavn {
-  "Navn på udefinert språk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+"Navn på en betalingsform på udefinert språk"
+type BetalingsformnavnAlleSprak {
+  "Navn på udefinert språk\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   und: String!
 }
 
@@ -992,7 +992,7 @@ type CampusnavnAlleSprak {
 "An RFC-3339 compliant Full Date Scalar"
 scalar Date
 
-"An RFC-3339 compliant DateTime Scalar"
+"A slightly refined version of RFC-3339 compliant DateTime Scalar"
 scalar DateTime
 
 union DeaktiverFagpersonerErrors = UgyldigInput
@@ -1096,6 +1096,35 @@ type Eksamenstilpasningsutstyr implements Node {
 type Eksternresultat implements Node {
   "Unik identifikator for eksternt resultat\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   id: ID!
+  "Kode for eksternresultatet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  kode: String
+  "Navn på emne eller tilsvarende, på originalspråket\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  navnOriginalSprak: EksternresultatNavnOriginalSprak
+  "Navn på emne eller tilsvarende, oversatt til engelsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  navnOversattAlleSprak: EksternresultatNavnOversattAlleSprak
+  "Beskrivelse av eksternresultatet på udefinert språk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  beskrivelseAlleSprak: EksternresultatBeskrivelseAlleSprak
+  "URL til emnebeskrivelse eller lignende\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  urlAlleSprak: EksternresultatUrlAlleSprak
+  "Hvilket lærested resultatet ble oppnådd ved\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  oppnaddVedLarested: Organisasjon
+  "Studienivåintervall for eksternresultatet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  studienivaintervall: Studienivaintervall
+  "Eksternresultatets studienivå\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  studieniva: Studieniva
+  "Eksternresultatets vurderingsresultatstatus\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vurderingsresultatstatus: Vurderingsresultatstatus
+  "Karakter oversatt til engelsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  karakter: EksternresultatResultatAlleSprak
+  "Planlagt eller oppnådd vekting for dette eksternresultatet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vekting: EksternresultatVekting
+  "Terminen eksternrsulattet ble oppnådd eller er planlagt oppnådd\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  termin: Termin
+}
+
+type EksternresultatBeskrivelseAlleSprak {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  und: String
 }
 
 "Eksterne resultater som er tilknyttet utdanningsplanen"
@@ -1116,6 +1145,55 @@ type EksternresultatIUtdanningsplan implements Node {
   brukTekstInnpassetPaVitnemal: Boolean!
   "Status se dokumentasjon er et påkrevd felt hvor verdien settes automatisk til N. Er kun til informasjon til saksbehandler om at ytterligere dokumentasjon om vedtaket finnes (og bør sees på).\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   seDokumentasjon: Boolean!
+  "Planlagt vekting for dette eksternresultatet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  planlagtVekting: EksternresultatIUtdanningsplanPlanlagtVekting
+  "Oppnådd vekting for dette eksternresultatet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  oppnaddVekting: EksternresultatIUtdanningsplanOppnaddVekting
+}
+
+type EksternresultatIUtdanningsplanOppnaddVekting {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  verdi: BigDecimal
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vektingstype: Vektingstype
+}
+
+type EksternresultatIUtdanningsplanPlanlagtVekting {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  verdi: BigDecimal
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vektingstype: Vektingstype
+}
+
+type EksternresultatNavnOriginalSprak {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  und: String
+}
+
+type EksternresultatNavnOversattAlleSprak {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  en: String
+}
+
+type EksternresultatResultatAlleSprak {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  en: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nn: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  bm: String
+}
+
+type EksternresultatUrlAlleSprak {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  und: String
+}
+
+type EksternresultatVekting {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  verdi: BigDecimal
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vektingstype: Vektingstype
 }
 
 type EksternresultatVektingIKvalifikasjon {
@@ -1138,7 +1216,7 @@ type Emne implements Node {
   "Forkortet emnenavn. Kortversjon av emnenavnet kan være nyttig for interne administrative formål, f.eks. når plassen i et skjermbilde eller på en rapport er begrenset."
   navnForkortetAlleSprak: EmnenavnForkortetAlleSprak
   "Alle tekster tilknyttet emnet (med innhold og metadata). Her kan alle beskrivelser hentes uavhengig av om emnet i FS har blitt angitt som klar for publisering for terminen beskrivelsen gjelder fra (det vil si, uavhengig om det har innslag for INFOTERMIN i FS)."
-  beskrivelser("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut." filter: EmneBeskrivelserFilterInput "Angi koder på hvilke tekstkategorier beskrivelsesavsnittene skal ha" tekstkategorikoder: [String!] "Angi terminer beskrivelsesavsnittene skal gjelde fra" gjelderFraTerminer: [EmnebeskrivelseFraTerminInput!]): [Emnebeskrivelsesavsnitt] @deprecated(reason: "Denne vil erstattes med en kant med paginering. Feltet her vil være tilgjengelig t.o.m. 31. mars 2026.")
+  beskrivelser("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut." filter: EmneBeskrivelserFilterInput): [Emnebeskrivelsesavsnitt] @deprecated(reason: "Deprecated.Bruk beskrivelsesavsnitt isteden. Feltet vil være tilgjengelig t.o.m. 31. mars 2026..")
   "Om emnet er et vurderingsemne, praksisemne eller emne av annen type. Typen gir noen overordnede føringer på funksjonalitet og visning i webapplikasjoner og ved rapportering."
   emnetype: Emnetype
   "Om emnet tilbys som fjernundervisning."
@@ -1162,6 +1240,8 @@ type Emne implements Node {
   "NUS-kode for emnets [utdanningsgruppering](https:\/\/www.ssb.no\/utdanning\/norsk-standard-for-utdanningsgruppering)."
   nusKode: String
   organisasjonsenhet: EmneAnsvarligeOrganisasjonsenheter
+  "Alle tekster tilknyttet emnet (med innhold og metadata).\nHer kan alle beskrivelser hentes uavhengig av om emnet i FS har blitt angitt som klar for publisering for terminen beskrivelsen gjelder fra\n(det vil si, uavhengig om det har innslag for INFOTERMIN i FS).\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  beskrivelsesavsnitt("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut.\n    \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: EmnebeskrivelsesavsnittFilterInput first: Int = 100 after: String): EmneBeskrivelsesavsnittConnection
   "Navnehistorikken for emnet.\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   navnAlleSprakHistorikk: [EmneNavnehistorikk]
   "Emne kan knyttes til flere fag. I de sammenhenger et emne må presenteres under et bestemt fag, så benyttes dette faget som er angitt som “viktigsteFag” (for eksempel ved faggruppering på karakterutskrifter)\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -1198,8 +1278,6 @@ type Emne implements Node {
   studienivaIntervall: Studienivaintervall
   "Om emnet skal avlegges som oppgave eller avhandling\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   erOppgave: Boolean
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  beskrivelsesavsnitt("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut.\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." filter: EmneBeskrivelsesavsnittFilterInput first: Int = 100 after: String): EmneBeskrivelsesavsnittConnection
   "Løpenummer for WS-tjeneste for LMS.\nVerdiene for feltene vil gjelder alle koblinger til LMS for et gitt emne (for vurderingsenhet, undervisningsenhet etc).\nFeltet brukes for å kunne koble emner til ulike LMSer på samme institusjon\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   tjenestenummerForLms: String
   "Viser hvilke personer som har hvilke roller knyttet til emnet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -1219,34 +1297,25 @@ input EmneBeskrivelserFilterInput {
   "Angi terminer beskrivelsesavsnittene skal gjelde fra"
   gjelderFraTerminer: [EmnebeskrivelseFraTerminInput!]
   "Angi hvilket språk beskrivelsene skal være på. Språket skal angis som [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode"
-  sprak: String
+  iso6392Kode: String
 }
 
 type EmneBeskrivelsesavsnittConnection {
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   edges: [EmneBeskrivelsesavsnittConnectionEdge]
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   pageInfo: PageInfo
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   nodes: [Emnebeskrivelsesavsnitt]
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   totalCount: Int
 }
 
 type EmneBeskrivelsesavsnittConnectionEdge {
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   cursor: String
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   node: Emnebeskrivelsesavsnitt
-}
-
-input EmneBeskrivelsesavsnittFilterInput {
-  "Angi koder på hvilke tekstkategorier beskrivelsesavsnittene skal ha\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  tekstkategorikoder: [String!]
-  "Angi terminer beskrivelsesavsnittene skal gjelde fra\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  gjelderFraTerminer: [EmnebeskrivelseFraTerminInput!]
-  "Angi hvilket språk beskrivelsene skal være på. Språket skal angis som [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  sprak: String
 }
 
 type EmneCampus implements Node {
@@ -1374,12 +1443,61 @@ type EmneIUtdanningsplan implements Node {
   spesialpensumTittel: SpesialpensumTittel
   "Merknad for emne i utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   merknad: EmneIUtdanningsplanMerknad
+  "Vektingen studenten har planlagt på dette emnet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  planlagtVekting: EmneIUtdanningsplanPlanlagtVekting
+  "Vektingen studenten har oppnådd for dette emnet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  oppnaddVekting: EmneIUtdanningsplanOppnaddVekting
+  "Studentens oppnådde resultater på dette emnet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  resultater("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." filter: EmneIUtdanningsplanResultaterFilterInput first: Int = 10 after: String): EmneIUtdanningsplanResultaterConnection
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  plassertPaUndervisningspartier: [Undervisningspartiplassering]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  emneSoknad: EmneSoknad
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  emneStudierett: EmneStudierett
 }
 
 "Merknad for emne i utdanningsplan med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-språkkode"
 type EmneIUtdanningsplanMerknad {
   "Udefinert språk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   und: String!
+}
+
+type EmneIUtdanningsplanOppnaddVekting {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  verdi: BigDecimal
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vektingstype: Vektingstype
+}
+
+type EmneIUtdanningsplanPlanlagtVekting {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  verdi: BigDecimal
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vektingstype: Vektingstype
+}
+
+type EmneIUtdanningsplanResultaterConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [EmneIUtdanningsplanResultaterConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [Resultat]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type EmneIUtdanningsplanResultaterConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: Resultat
+}
+
+input EmneIUtdanningsplanResultaterFilterInput {
+  "Ta bare med resultater som er gyldige\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  erGyldig: Boolean
 }
 
 "Gyldige terminbetegnelser for ikkeUtloptITermin-filteret på emne"
@@ -1495,6 +1613,31 @@ type EmneStudierett implements Node {
   undervisningstilpasning: [Undervisningstilpasning!]!
   "Studenten som har denne studieretten\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   student: StudentVedLarested
+  "Studentens resultater på dette emnet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  resultater("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." filter: EmneStudierettResultaterFilterInput first: Int = 10 after: String): EmneStudierettResultaterConnection
+}
+
+type EmneStudierettResultaterConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [EmneStudierettResultaterConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [Resultat]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type EmneStudierettResultaterConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: Resultat
+}
+
+input EmneStudierettResultaterFilterInput {
+  "Hvorvidt søket skal begrenses til bare gyldige eller bare ugyldige resultater\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  erGyldig: Boolean
 }
 
 input EmneStudieretterFilterInput {
@@ -1661,6 +1804,15 @@ type Emnebeskrivelsesavsnitt implements Node {
   publiseringstag: String
   "Rekkefølgenummer på avsnittet. Kan benyttes til å sortere avsnittene.\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   rekkefolgenummer: Int
+}
+
+input EmnebeskrivelsesavsnittFilterInput {
+  "Angi koder på hvilke tekstkategorier beskrivelsesavsnittene skal ha\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  tekstkategorikoder: [String!]
+  "Angi terminer beskrivelsesavsnittene skal gjelde fra\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  gjelderFraTerminer: [EmnebeskrivelseFraTerminInput!]
+  "Angi hvilket språk beskrivelsene skal være på. Språket skal angis som [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  sprakkode6392: String
 }
 
 "Angir gyldighetsperioden for et emnebeskrivelsesavsnitt."
@@ -2723,13 +2875,13 @@ type FodselsnummerendringMerknad {
 
 "En persons folkeregistrerte adresse"
 type FolkeregistrertAdresse {
-  "Ev. c\/o-adresse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Ev. c\/o-adresse\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   co: String
-  "Gate- eller postboks-adresse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Gate- eller postboks-adresse\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   gate: String
-  "Postnummer og poststed\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Postnummer og poststed\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   postnummerOgSted: String
-  "Land\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Land\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   land: String
 }
 
@@ -3083,7 +3235,7 @@ type KarakterEmnesamling {
   "Om karakteren tilhører en gradert karakterskala med bokstavkarakterer fra A til F eller en ugradert karakterskala med bestått eller ikke bestått\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   bokstavEllerUgradert: Boolean
   "Karakternavnet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  navn: Karakternavn
+  navnAlleSprak: KarakternavnAlleSprak
   "Karaktertallet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   tall: BigDecimal!
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -3108,23 +3260,23 @@ type KarakterResultat {
   id: ID! @deprecated(reason: "No longer supported")
   "Om karakteren tilhører en gradert karakterskala med bokstavkarakterer fra A til F eller en ugradert karakterskala med bestått eller ikke bestått\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   bokstavEllerUgradert: Boolean
-  "Karakternavnet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  navn: Karakternavn
+  "Karakternavn på alle tilgjengelige språk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  navnAlleSprak: KarakternavnAlleSprak
   "Karaktertallet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   tall: BigDecimal
   "regel: Karakterregel @splitQuery @reference(references: [{table: \"VURDERINGSENHET\"}, {table: \"VURDERINGSKOMBINASJON\"}]) TODO bruk denne igjen når FSP-463 har blitt løst\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   regel: Karakterregel
 }
 
-type Karakternavn {
+type KarakternavnAlleSprak {
   "Engelsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  eng: String
+  en: String
   "Bokmål\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  nob: String!
+  nb: String!
   "Nynorsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  nno: String
+  nn: String
   "Nord-samisk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  sme: String
+  se: String
 }
 
 type Karakterregel {
@@ -3178,6 +3330,26 @@ type Klasse implements Node {
   skalEksporteresTilLms: Boolean
   "lmsRomkode brukes i Fronter til å generere Rom, samt i Canvas for å angi at Studieprogram\/Kull\/Klasse skal gi opphav til Course (ikke bare Account).\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   lmsRomkode: String
+  "Avgifter som er spesifikke for denne klassen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  avgifter(first: Int = 100 after: String): KlasseAvgifterConnection
+}
+
+type KlasseAvgifterConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [KlasseAvgifterConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [KullOgKlasseSpesifikkAvgift]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type KlasseAvgifterConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: KullOgKlasseSpesifikkAvgift
 }
 
 "Tilknytning av programstudierett til klasse. Inneholder også historikk over klassemedlemskap for student innenfor studieprogram."
@@ -3253,11 +3425,11 @@ interface Kompetansebevis {
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   id: ID!
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  gyldig: Boolean!
+  erGyldig: Boolean
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
 }
 
 type KompetansebevisConnection {
@@ -3266,7 +3438,7 @@ type KompetansebevisConnection {
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   pageInfo: PageInfo
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  nodes: [Kompetansebevis!]!
+  nodes: [Kompetansebevis]
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   totalCount: Int
 }
@@ -3320,6 +3492,8 @@ type Kull implements Node {
   lmsRomkode: String
   "Løpenummer for WS-tjeneste for LMS.\nVerdiene for feltene vil gjelder alle koblinger til LMS for et gitt emne (for vurderingsenhet, undervisningsenhet etc).\nFeltet brukes for å kunne koble kull til ulike LMSer på samme institusjon\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   tjenestenummerForLms: String
+  "Avgifter knyttet til dette kullet eller klasser på dette kullet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  kullOgKlasseSpesifikkeAvgift("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." filter: KullKullOgKlasseSpesifikkeAvgifterFilterInput first: Int = 100 after: String): KullKullOgKlasseSpesifikkeAvgiftConnection
 }
 
 input KullFilterInput {
@@ -3356,9 +3530,47 @@ input KullKlasserFilterInput {
   skalEksporteresTilLms: [Boolean!]
 }
 
+type KullKullOgKlasseSpesifikkeAvgiftConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [KullKullOgKlasseSpesifikkeAvgiftConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [KullOgKlasseSpesifikkAvgift]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type KullKullOgKlasseSpesifikkeAvgiftConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: KullOgKlasseSpesifikkAvgift
+}
+
+input KullKullOgKlasseSpesifikkeAvgifterFilterInput {
+  "Ta bare med avgifter som gjelder for alle klasser på kullet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  gjelderAlleKlasser: Boolean
+}
+
 type KullNavnAlleSprak {
   no: String!
   en: String
+}
+
+type KullOgKlasseSpesifikkAvgift implements Node {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  id: ID!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  kull: Kull
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  klasse: Klasse
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  fakturadetaljtype: Fakturadetaljtype
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  gjelderAlleklasser: Boolean
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  belop: BigDecimal
 }
 
 input KullRolleDatoperiodeInput {
@@ -3560,20 +3772,19 @@ type Land implements Node {
   id: ID!
   "[ISO-3166 Alfa3-landkode](https:\/\/www.iso.org\/obp\/ui\/#search)"
   landkodeAlfa3: String
-  "Navn på landet med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-språkkode\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  navn: Landnavn!
+  "Navn på landet\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  navnAlleSprak: LandnavnAlleSprak!
   "[ISO-3166 Alfa2-landkode](https:\/\/www.iso.org\/obp\/ui\/#search)\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   landkodeAlfa2: String
 }
 
-"Navn på land med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-språkkode"
-type Landnavn {
-  "Bokmål\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  nob: String!
-  "Nynorsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  nno: String
-  "Engelsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  eng: String
+type LandnavnAlleSprak {
+  "Engelsk\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  en: String
+  "Bokmål\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  nb: String!
+  "Nynorsk\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  nn: String
 }
 
 "Angir periode hvori enkeltemne med 'kanTilbysMedFleksibelFinansiering' == True skal være synlig i Lånekassens portal."
@@ -3677,6 +3888,11 @@ type MeldingOmFodselsnummerendring implements Node {
 type MeldingOmFodselsnummerendringMerknad {
   "Merknad for melding om dødsfall på udefinert språk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   und: String!
+}
+
+type MerknadstekstAlleSprak {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  und: String
 }
 
 "Minimumskrav til vekting for en valgregel"
@@ -3877,11 +4093,11 @@ type OppnaddEmnesamling implements Node & Kompetansebevis {
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   id: ID!
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  gyldig: Boolean!
+  erGyldig: Boolean
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   opprinneligLarested: Organisasjon
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -3905,9 +4121,9 @@ type OppnaddKvalifikasjon implements Node & Kompetansebevis {
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   id: ID!
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   gradkode: String!
   "Datoen for når kvalifikasjon er oppnådd\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -3923,7 +4139,7 @@ type OppnaddKvalifikasjon implements Node & Kompetansebevis {
   "Angir kulltermin(År) for studenten\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   aarstallKull: Int
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  gyldig: Boolean!
+  erGyldig: Boolean
   "Gradnavn\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   navnAlleSprak: OppnaddKvalifikasjonNavnAlleSprak
   "Vekting i studiepoeng\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -4161,6 +4377,11 @@ type OpprettStudietilpasningerPayload {
   errors: [OpprettStudietilpasningForStudentVedLarestedError!]!
 }
 
+enum OrderDirection {
+  ASC
+  DESC
+}
+
 "Organisasjon er det høyeste nivået i organisasjonsenhetshierarkiet i FS."
 type Organisasjon implements Node {
   "Unik identifikator for organisasjonen"
@@ -4345,6 +4566,18 @@ type Permisjonsperiode {
   til: Date!
 }
 
+enum PersonOrderByField {
+  "Sorter på navn, etternavn først, så fornavn\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  ETTERNAVN_FORNAVN
+}
+
+input PersonOrderByInput {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  direction: OrderDirection!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  orderByField: PersonOrderByField!
+}
+
 "Personprofilen inneholder kontaktinformasjon og andre nøkkeldata om en person som er registrert ved denne institusjonen"
 type PersonProfil implements Node {
   "Unik identifikator for personprofilen"
@@ -4353,30 +4586,34 @@ type PersonProfil implements Node {
   navn: Personnavn
   "Arbeidse-postadresse for personer som ikke er ansatt ved institusjonen"
   arbeidsEpost: String
-  "Personens statsborgerskap\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Personens fødselsdato\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  fodselsdato: Date
+  "Personens 11-sifrede fødselsnummer\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  fodselsnummer: String
+  "Personens statsborgerskap\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   statsborgerskap: [Statsborgerskap!]!
+  "Mobiltelefonnummer\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  mobilTelefon: Telefon
+  "Privat e-postadresse\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  privatEpost: String
+  "Epostadresse personen er blitt tildelt ved denne institusjonen (student- eller arbeids-epost)\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  institusjonsEpost: String
+  "Personens folkeregistrerte adresse\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  folkeregistrertAdresse: FolkeregistrertAdresse
+  "Adressen personen ønsker å ta imot post på. Foreløpig kun tilgjengelig for studenter.\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  postadresse: Postadresse
+  "Studentdata for denne personen\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  student: StudentVedLarested
   "Personens pass\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   pass: [Pass!]!
   "Personens tidligere fødselsnumre\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   fodselsnummerhistorikk: [Fodselsnummerendring!]!
   "Personløpenummeret er mye brukt som unik identifikator for personer i systemer som bruker eldre integrasjoner mot FS. Det\ntilgjengeliggjøres her for bakover-kompatibilitet. For nye integrasjoner anbefaler vi at du heller bruker GraphQL-APIets\nIDer til slike formål.\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   personlopenummer: String!
-  "Privat e-postadresse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  privatEpost: String
-  "Epostadresse personen er blitt tildelt ved denne institusjonen (student- eller arbeids-epost)\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  institusjonsEpost: String
-  "Mobiltelefonnummer\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  mobilTelefon: Telefon
   "Privat telefonnummer\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   privatTelefon: Telefon
   "Arbeidstelefonnummer\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   arbeidsTelefon: Telefon
-  "Personens folkeregistrerte adresse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  folkeregistrertAdresse: FolkeregistrertAdresse
-  "Personens fødselsdato\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  fodselsdato: Date
-  "Personens 11-sifrede fødselsnummer\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  fodselsnummer: String
   "Personens kjønn\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   kjonn: Kjonn!
   "Personens morsmål. Returnerer en [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -4385,16 +4622,14 @@ type PersonProfil implements Node {
   maalform: Maalform
   "ProgramStudierettene en person har hatt gjennom livsløpet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   programStudieretter: [ProgramStudierett!]!
-  "Adressen personen ønsker å ta imot post på. Foreløpig kun tilgjengelig for studenter.\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  postadresse: Postadresse
   "Eventuelle tidligere navn som har vært registrert for denne personprofilen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   navnehistorikk: [Navnehistorikk!]!
   "Hvorvidt personen er registrert som død\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   dod: Boolean
   "Personen bankkontonr\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   bankkontonummer: String
-  "Studentdata for denne personen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  student: StudentVedLarested
+  "Feidebruker for personen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  feideBruker: String
 }
 
 type PersonVedLarested {
@@ -4402,7 +4637,7 @@ type PersonVedLarested {
   eierInstitusjonsnummer: String!
   "Personløpenummeret til studenten ved institusjonen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   personlopenummer: String!
-  "Personprofil for studenten ved denne institusjonen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "node(id: ID!): Node for studenten ved denne institusjonen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   personProfil: PersonProfil!
 }
 
@@ -4553,13 +4788,13 @@ type PolitiattesttypeNavn {
 }
 
 type Postadresse {
-  "Ev. c\/o-adresse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Ev. c\/o-adresse\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   co: String
-  "Gate- eller postboks-adresse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Gate- eller postboks-adresse\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   gate: String
-  "Postnummer og poststed\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Postnummer og poststed\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   postnummerOgSted: String
-  "Land\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Land\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   land: String
 }
 
@@ -4622,6 +4857,8 @@ type ProgramStudierett implements Node {
   fagbegrensning: [Fagbegrensning!]!
   "Emner som studieretten er begrenset til. Gjelder for aktuell student\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   emnebegrensning: [Emnebegrensning!]!
+  "Eventuelle merknader for denne studieretten\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  merknader: [ProgramStudierettMerknad]
 }
 
 input ProgramStudierettAktivIPeriodeInput {
@@ -4653,6 +4890,18 @@ type ProgramStudierettKlassemedlemskapConnectionEdge {
   cursor: String
   "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   node: Klassemedlemskap
+}
+
+"En merknad knyttet til en program-studierett"
+type ProgramStudierettMerknad implements Node {
+  "Unik identifikator for merknaden\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  id: ID!
+  "Dato for merknaden\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  dato: Date
+  "Journalnummer for merknaden i arkivsystemet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  journalnummer: String
+  "Merknadstekst\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  merknadstekstAlleSprak: MerknadstekstAlleSprak
 }
 
 "Input for å filtrere på programstudieretter"
@@ -4804,11 +5053,15 @@ type Query {
   studenterGittPersonlopenumre("Velg hvilket lærested du vil hente studenter fra" eierOrganisasjonskode: String! "Personløpenumre til studentene du vil hente" personlopenumre: [String!]!): [StudentVedLarested]
   studenterGittStudentnumre("Velg hvilket lærested du vil hente studenter fra" eierOrganisasjonskode: String! "Liste med studentnumre" studentnumre: [String!]!): [StudentVedLarested]
   "Returnerer liste med terminer\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
-  terminer("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: QueryTerminerFilterInput first: Int = 100 after: String): QueryTerminerConnection
+  terminer("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: QueryTerminerFilterInput! first: Int = 100 after: String): QueryTerminerConnection
+  "Returnerer liste med terminbetegnelser\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  terminbetegnelser("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: QueryTerminbetegnelserFilterInput! first: Int = 100 after: String): QueryTerminbetegnelserConnection
   "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   studenterGittFeideBrukere("Oppgi hvilken institusjon du vil hente studenter for\n    \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." eierOrganisasjonskode: String! "Liste med Feide-brukernavn\n    \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." feideBrukere: [String!]!): [StudentVedLarested]
   "Søk etter personprofiler\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
-  personProfiler("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: QueryPersonProfilerFilterInput first: Int = 100 after: String): QueryPersonProfilerConnection
+  personProfiler("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: QueryPersonProfilerFilterInput! "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt).\nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." orderBy: PersonOrderByInput first: Int = 100 after: String): QueryPersonProfilerConnection
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  node("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." id: ID!): Node
   "Søk på programstudieretter med filtrering\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   programStudieretter("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: ProgramStudieretterFilterInput! first: Int = 100 after: String): QueryProgramStudieretterConnection
   "Returnerer liste med studenter på bachelor- og masternivå som ikke er registrert med ESI(European Student Identifier)\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
@@ -4827,8 +5080,6 @@ type Query {
   emnehendelser("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." eierOrganisasjonskode: String! "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." hendelsestype: [Emnehendelsestype!]! first: Int = 100 after: String): QueryEmnehendelserConnection
   "Returnerer oppgitt eierorganisasjons kopi av organisasjonsregisteret\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   organisasjoner("Filtrer på hvorvidt organisasjonen er en gyldig mottaker av semesteravgift\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." kanMottaSemesteravgift: Boolean first: Int = 100 after: String): QueryOrganisasjonerConnection
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  node("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." id: ID!): Node
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   nodes("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." ids: [ID!]): [Node]
   "Returnerer liste med studenthendelser)\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -4866,7 +5117,7 @@ type Query {
   "Returnerer liste med fagpersoner for gitte personlopenumre\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   fagpersonerGittPersonlopenumre("Oppgi hvilken institusjon du vil hente fagpersoner fra\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." eierOrganisasjonskode: String! "Liste med fødselsnumre\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." personlopenumre: [String!]): [FagpersonVedLarested]
   "Returnerer liste med kompetansebevis for person\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  kompetansebevisForPerson("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." fodselsnummer: [String!] "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." personlopenummer: [String!] "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." eierOrganisasjonskode: String "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  kompetansebevisForPerson("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." fodselsnummer: [String!] "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." personlopenummer: [String!] "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." eierOrganisasjonskode: String "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Returnerer en liste over hvilke læresteder personen er registrert hos\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   institusjonerForPerson: [PersonVedLarested!]!
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -5252,8 +5503,31 @@ input QueryPersonProfilerFilterInput {
   eierOrganisasjonskode: String!
   "Filtrer søket på fødselsdato\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   fodselsdatoer: [Date!]
-  "Filtrer søket på epostadresser (søker på tves av alle personens e-postadresser)\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  "Filtrer søket på epostadresser (søker på tvers av alle personens e-postadresser)\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   epostadresser: [String!]
+  "Begrens søkeresultatet til studenter som har betalt semesteravgift i følgende terminer\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  betaltSemesteravgiftITerminer: [ID!]
+  "Fritekstsøk som søker i Fornavn, etternavn, fødselsnummer, mobilnummer, og studentnummer.\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  freeText: String
+  "Begrens søket til personer som har en studierett med merknad knyttet til seg\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  harStudierettMedMerknad: Boolean
+  "Begrens søket til aktuelt statsborgerskap - ID på land\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  statsborgerskapILand: [ID!]
+  "Begrens søket til personer med statsborgerskapkategori\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  statsborgerskapkategori: [Statsborgerskapkategori!]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  erIPermisjonNaa: Boolean
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  programStudieretter: QueryPersonProfilerFilterProgramStudieretterInput
+}
+
+input QueryPersonProfilerFilterProgramStudieretterInput {
+  "Begrens søket til studenter som har eller har hatt studierett på følgende studieprogrammer\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  studieprogrammer: [ID!]
+  "Begrens søket til studenter som har eller har hatt studierett med kull fra følgende terminer\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  kullterminer: [ID!]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  aktivStudierettStatuser: [ProgramStudierettAktivStatus!]
 }
 
 type QueryPolitiattesttyperConnection {
@@ -5629,6 +5903,29 @@ type QueryTekstkategorierConnectionEdge {
   node: Tekstkategori
 }
 
+type QueryTerminbetegnelserConnection {
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  edges: [QueryTerminbetegnelserConnectionEdge]
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  nodes: [Terminbetegnelse]
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  totalCount: Int
+}
+
+type QueryTerminbetegnelserConnectionEdge {
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  node: Terminbetegnelse
+}
+
+input QueryTerminbetegnelserFilterInput {
+  "Oppgi hvilken organisasjon du vil hente terminbetegnelser for\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  eierOrganisasjonskode: String!
+}
+
 type QueryTerminerConnection {
   "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   edges: [QueryTerminerConnectionEdge]
@@ -5650,8 +5947,10 @@ type QueryTerminerConnectionEdge {
 input QueryTerminerFilterInput {
   "Oppgi hvilken organisasjon du vil hente terminer for\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   eierOrganisasjonskode: String!
-  "Oppgi hvilke årstall du vil hente terminer for\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Oppgi hvilke årstall du vil hente terminer for\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   arstall: [Int!]
+  "Oppgi hvilke terminbetegnelser du vil hente ut\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  terminbetegnelser: [ID!]
 }
 
 type QueryUndervisingstilpasningskategorierConnection {
@@ -5768,7 +6067,9 @@ type Realkompetanse implements Node {
   "Unik identifikator for realkompetanse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   id: ID!
   "Navn på realkompetansen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  navn: Realkompetansenavn!
+  navnAlleSprak: RealkompetansenavnAlleSprak
+  "Navn på realkompetansen oversatt til engelsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  navnOversattAlleSprak: RealkompetansenavnOversattAlleSprak
   "Beskrivelse av realkompetanse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   beskrivelse: Realkompetansebeskrivelse
   "Vekting realkompetanse for student i utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -5781,25 +6082,22 @@ type Realkompetanse implements Node {
   periode: Realkompetanseperiode!
 }
 
-type RealkompetanseIUtdanningsplan implements Node {
-  "Unik identifikator for RealkompetanseIUtdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  id: ID!
-  "Realkompetanse for student tilknyttet utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  realkompetanse: Realkompetanse!
-}
-
 "Beskrivelse av realkompetanse"
 type Realkompetansebeskrivelse {
   "Beskrivelse av realkompetanse på udefinert språk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   und: String
 }
 
-"Navn på realkompetanse på norsk eller engelsk med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-språkkode"
-type Realkompetansenavn {
-  "Norsk navn på realkompetanse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+"Navn på realkompetanse på originalspråket"
+type RealkompetansenavnAlleSprak {
+  "Navn på realkompetansen på originalspråket\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   und: String!
-  "Engelsk navn for realkompetanse\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  eng: String
+}
+
+"Navn på realkompetanse oversatt til engelsk"
+type RealkompetansenavnOversattAlleSprak {
+  "Engelsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  en: String
 }
 
 "Start- og sluttidspunkt for realkompetanse"
@@ -6081,9 +6379,9 @@ type Resultat implements Node & Kompetansebevis {
   "Unik identifikator for vurderingsprotokollen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   id: ID!
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  children("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." first: Int = 100 "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." after: String): KompetansebevisConnection
+  parents("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." gyldig: Boolean first: Int = 100 after: String): KompetansebevisConnection
   "Emnet vurderingsprotokollen gjelder\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   emne: Emne!
   "Kandidatlopenummeret studenten hadde på eksamen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6101,7 +6399,7 @@ type Resultat implements Node & Kompetansebevis {
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   vurderingsresultatstatus: Vurderingsresultatstatus
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  gyldig: Boolean!
+  erGyldig: Boolean
   "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   erKunngjort: Boolean
   "Dato når resultatet ble protokollført\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6164,7 +6462,9 @@ type Rollenavn {
   nno: String
   "Engelsk\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   eng: String
-  "LMS navn\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Navn på rollen for framvisning i LMS - kortversjon\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  lmsNavnKort: String
+  "Navn på rollen for framvisning i LMS\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   lmsNavn: String
   "Navn som skal brukes ved publisering\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   publiseringsnavn: String
@@ -6288,8 +6588,12 @@ type SamtykkekravSporsmal {
 
 "En students semesterregistrering for en gitt termin. For mer informasjon, se dokumentasjon for [registerkort](https:\/\/studieadministrasjon.sikt.no\/begreper\/registerkort)"
 type Semesterregistrering implements Node {
-  "Unik identifikator for semesterregistreringen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Unik identifikator for semesterregistreringen\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   id: ID!
+  "Om studenten har betalt [semesteravgift](https:\/\/studieadministrasjon.sikt.no\/begreper\/semesteravgift), eller har fått fritak for betaling av semesteravgift\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  harBetaltSemesteravgift: Boolean!
+  "Hvilken betalingsform som er benyttet\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  betalingsform: Betalingsform
   "Terminen semesterregistreringen gjelder\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   termin: Termin!
   "Studenten semesterregistreringen gjelder\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6300,12 +6604,8 @@ type Semesterregistrering implements Node {
   erSemesterregistrert: Boolean!
   "Hvordan studenten har fullført registreringen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   registreringsform: Registreringsform
-  "Om studenten har betalt [semesteravgift](https:\/\/studieadministrasjon.sikt.no\/begreper\/semesteravgift), eller har fått fritak for betaling av semesteravgift\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  harBetaltSemesteravgift: Boolean!
   "Dato semesteravgiften ble betalt\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   betaltSemesteravgiftDato: Date
-  "Hvilken betalingsform som er benyttet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  betalingsform: Betalingsform
   "Hvilken institusjon semesteravgiften ble betalt ved\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   betaltSemesteravgiftVedOrganisasjon: Organisasjon
   "Hvorvidt semesterregistreringen er ugyldiggjort\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6530,6 +6830,17 @@ type Statsborgerskap implements Node {
   land: Land!
 }
 
+enum Statsborgerskapkategori {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  NORSK_NORDISK
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  EU_EOS_SVEITS
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  TREDJELAND
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  UKJENT
+}
+
 "Responstype for StudentHendelser av studenthendelsestype DODSFALL"
 type StudentDodsfall implements Studenthendelse {
   "ID for Studenthendelsen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6693,6 +7004,15 @@ input StudentProgramStudierettFilterInput {
   aktivStatus: [ProgramStudierettAktivStatus!] = [ AKTIV ]
 }
 
+input StudentSemesterregistreringerFilterInput {
+  "Angi hvilke terminer du vil hente semesterregistreringer for\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  terminer: [ID!]
+  "Angi om du kun ønsker semesterregistreringer som er fullført, eller om du også vil ha semesterregistreringer som ikke er fullført\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  erSemesterregistrert: Boolean
+  "Angi om du kun ønsker semesterregistreringer der semesteravgift er registrert betalt (eller der det er registrert fritak for betaling), eller om du også vil ha med semesterregistreringer uten registrert betaling\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  harBetaltSemesteravgift: Boolean
+}
+
 "Responstype for StudentHendelser av studenthendelsestype SEMESTERREGISTRERT"
 type StudentSemesterregistrert implements Studenthendelse {
   "ID for Studenthendelsen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6757,6 +7077,8 @@ type StudentVedLarested implements Node {
   emneStudieretter(first: Int = 10 after: String): StudentVedLarestedEmneStudieretterConnection
   "ESI (European Student Identifier) for studenten\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   europeanStudentId: Esi
+  "Studentens semesterregistreringer og betaling av semesteravgift ved denne institusjonen\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  semesterregistreringer("Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: StudentSemesterregistreringerFilterInput first: Int = 100 after: String): StudentVedLarestedSemesterregistreringerConnection
   "Studentnummeret studenten har fått tildelt ved denne institusjonen\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   studentnummer: String!
   "Låntetaker-ID for bruk i bibliotekssystemet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6777,8 +7099,6 @@ type StudentVedLarested implements Node {
   instrumenter: [InstrumentForStudent!]!
   "Studentens høyeste studienivå basert på program-studieretter og vurderingsmeldinger\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   hoyesteStudieniva: Studieniva
-  "Semesterregistreringer for studenter\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  semesterregistreringer("Angi hvilke terminer du ønsker å se semesterregistreringer for\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." terminer: [SemesterregistreringsterminInput!] "Angi om du kun ønsker semesterregistreringer som er fullført, eller om du også vil ha semesterregistreringer som ikke er fullført (standardverdi er kun fullførte)\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." registrert: [Boolean!] = true "Angi om du kun ønsker semesterregistreringer der semesteravgift er registrert betalt (eller der det er registrert fritak for betaling), eller om du også vil ha med semesterregistreringer uten registrert betaling (standardverdi er kun betalte)\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." betaltSemesteravgift: [Boolean!] = true): [Semesterregistrering!]!
   "Tilpasninger i studiesituasjonen som studenten har fått innvilget\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   studietilpasninger: [Studietilpasning!]!
   "Samtykker som studenten har gitt eller trukket tilbake. Brukes blant annet for å innhente samtykke til behandling av personopplysninger.\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
@@ -6813,6 +7133,8 @@ type StudentVedLarested implements Node {
   kanOverforesTilLms: Boolean!
   "Beregnet studieprogramtilhørighet for studenten per termin. For studenter som er aktive på ett studieprogram,\nreturneres den nyeste studieretten der det er angitt på studieprogrammet at automatisk beregning kan benyttes. For\nstudenter som ikke har studierett på noe studieprogram, beregnes studieprogramtilhørigheten ut fra hvilke emner\nstudenten er meldt opp til i denne terminen.\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   studieprogramISemester("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." filter: StudentStudieprogramISemesterFilter): [BeregnetStudieprogramForStudentISemester!]!
+  "Emnestudieretter for emner som ikke inngår i studentens utdaninngsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  enkeltemner(first: Int = 10 after: String): StudentVedLarestedEnkeltemnerConnection
 }
 
 type StudentVedLarestedEmneStudieretterConnection {
@@ -6827,6 +7149,24 @@ type StudentVedLarestedEmneStudieretterConnectionEdge {
   node: EmneStudierett
 }
 
+type StudentVedLarestedEnkeltemnerConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [StudentVedLarestedEnkeltemnerConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [EmneStudierett]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type StudentVedLarestedEnkeltemnerConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: EmneStudierett
+}
+
 type StudentVedLarestedProgramStudieretterConnection {
   edges: [StudentVedLarestedProgramStudieretterConnectionEdge]
   pageInfo: PageInfo
@@ -6837,6 +7177,24 @@ type StudentVedLarestedProgramStudieretterConnection {
 type StudentVedLarestedProgramStudieretterConnectionEdge {
   cursor: String
   node: ProgramStudierett
+}
+
+type StudentVedLarestedSemesterregistreringerConnection {
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  edges: [StudentVedLarestedSemesterregistreringerConnectionEdge]
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  nodes: [Semesterregistrering]
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  totalCount: Int
+}
+
+type StudentVedLarestedSemesterregistreringerConnectionEdge {
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  node: Semesterregistrering
 }
 
 "Responstype for StudentHendelser av studenthendelsestype VURDERINGSMELDING_SLETTET"
@@ -7181,11 +7539,17 @@ type Studienivaintervall {
 "Studienivånavn oppgitt med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode"
 type StudienivanavnAlleSprak {
   "Engelsk"
-  eng: String
+  eng: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk en i stedet.")
   "Bokmål"
-  nob: String
+  nob: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nb i stedet.")
   "Nynorsk"
-  nno: String
+  nno: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nn i stedet.")
+  "Engelsk"
+  en: String
+  "Bokmål"
+  nb: String
+  "Nynorsk"
+  nn: String
 }
 
 "Studieoppbygning for et kull. Studieoppbygningen er et hierarki sammensatt av flere studieoppbygningsdeler. Dette brukes ved sammensetting av utdanningsplan for studieprogram for studenter."
@@ -7361,11 +7725,17 @@ type StudieoppbygningsdelVektingskrav {
 "Navn på studieoppbygningsdel med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-språkkode"
 type StudieoppbygningsdelnavnAlleSprak {
   "Bokmål"
-  nob: String
+  nob: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nb i stedet.")
   "Nynorsk"
-  nno: String
+  nno: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nn i stedet.")
   "Engelsk"
-  eng: String
+  eng: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk en i stedet.")
+  "Bokmål"
+  nb: String
+  "Nynorsk"
+  nn: String
+  "Engelsk"
+  en: String
 }
 
 "Studieprogram er den enheten som studenter kan tas opp til og har studierett innenfor. Til denne kan det knyttes krav\/regler for gjennomføring av studiet."
@@ -7379,7 +7749,7 @@ type Studieprogram implements Node {
   "Er studieprogrammet aktivt?"
   erAktiv: Boolean
   "Alle tekster tilknyttet studieprogrammet (med innhold og metadata). Her kan alle beskrivelser hentes uavhengig av om studieprogrammet i FS har blitt angitt som klar for publisering for terminen beskrivelsen gjelder fra (det vil si, uavhengig om det har innslag for INFOTERMIN i FS)."
-  beskrivelser("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut." filter: StudieprogramBeskrivelserFilterInput "Angi koder på hvilke tekstkategorier beskrivelsesavsnittene skal ha" tekstkategorikoder: [String!] "Angi terminer beskrivelsesavsnittene skal gjelde fra" gjelderFraTerminer: [StudieprogrambeskrivelseFraTerminInput!]): [Studieprogrambeskrivelsesavsnitt] @deprecated(reason: "Denne vil erstattes med en kant med paginering. Feltet her vil være tilgjengelig t.o.m. 31. mars 2026.")
+  beskrivelser("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut." filter: StudieprogramBeskrivelserFilterInput "Angi koder på hvilke tekstkategorier beskrivelsesavsnittene skal ha" tekstkategorikoder: [String!] "Angi terminer beskrivelsesavsnittene skal gjelde fra" gjelderFraTerminer: [StudieprogrambeskrivelseFraTerminInput!]): [Studieprogrambeskrivelsesavsnitt] @deprecated(reason: "Denne vil erst   attes med en kant med paginering. Deprecated. Bruk beskrivelsesavsnitt isteden. Feltet vil være tilgjengelig t.o.m. 31. mars 2026.")
   "Organisering av programmet (campus-undervisning, desentralisert, fjernundervisning med samlinger). Viktigste form for organisering skal angis her."
   undervisningsorganisering: Undervisningsorganisering
   "Informasjon om formell godkjenning av studieprogrammet"
@@ -7398,6 +7768,8 @@ type Studieprogram implements Node {
   studieniva: Studieniva
   "Personroller som tilhører studieprogrammet"
   personroller(filter: StudieprogramPersonrollerFilter): [Studieprogramrolle]
+  "Alle tekster tilknyttet studieprogrammet (med innhold og metadata).\nHer kan alle beskrivelser hentes uavhengig av om studieprogrammet i FS har blitt angitt som klar for publisering for terminen beskrivelsen gjelder fra\n(det vil si, uavhengig om det har innslag for INFOTERMIN i FS).\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  beskrivelsesavsnitt("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut.\n    \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)." filter: StudieprogramBeskrivelsesavsnittFilterInput first: Int = 100 after: String): StudieprogramBeskrivelsesavsnittConnection
   "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   campuser(first: Int = 10 after: String): StudieprogramCampuserConnection
   "Kull som studenter på dette programmet kan plasseres på\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
@@ -7448,12 +7820,12 @@ type Studieprogram implements Node {
   programStudieretter("Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." filter: StudieProgramProgramstudieretterFilterInput): [ProgramStudierett!]!
   "Utvekslingsavtaler som er tilgjengelige for dette studieprogrammet\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   utvekslingsavtalekoblinger: [StudieprogramUtvekslingsavtaleKobling!]!
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  beskrivelsesavsnitt("Angi filter på hva slags beskrivelsesavsnitt som skal trekkes ut.\n    \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)." filter: StudieprogramBeskrivelsesavsnittFilterInput first: Int = 100 after: String): StudieprogramBeskrivelsesavsnittConnection
   "Om programmet skal overføres til LMS\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   skalEksporteresTilLms: Boolean
   "lmsRomkode brukes i Fronter til å generere Rom, samt i Canvas for å angi at Studieprogram\/Kull\/Klasse skal gi opphav til Course (ikke bare Account).\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   lmsRomkode: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  studienivaintervallkode: StudienivaIntervallKode
 }
 
 type StudieprogramAnsvarligeOrganisasjonsenheter {
@@ -7471,30 +7843,30 @@ input StudieprogramBeskrivelserFilterInput {
 }
 
 type StudieprogramBeskrivelsesavsnittConnection {
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   edges: [StudieprogramBeskrivelsesavsnittConnectionEdge]
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   pageInfo: PageInfo
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   nodes: [Studieprogrambeskrivelsesavsnitt]
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   totalCount: Int
 }
 
 type StudieprogramBeskrivelsesavsnittConnectionEdge {
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   cursor: String
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   node: Studieprogrambeskrivelsesavsnitt
 }
 
 input StudieprogramBeskrivelsesavsnittFilterInput {
-  "Angi koder på hvilke tekstkategorier beskrivelsesavsnittene skal ha\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Angi koder på hvilke tekstkategorier beskrivelsesavsnittene skal ha\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   tekstkategorikoder: [String!]
-  "Angi terminer beskrivelsesavsnittene skal gjelde fra\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Angi terminer beskrivelsesavsnittene skal gjelde fra\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   gjelderFraTerminer: [StudieprogrambeskrivelseFraTerminInput!]
-  "Angi hvilket språk beskrivelsene skal være på. Språket skal angis som [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  sprak: String
+  "Angi hvilket språk beskrivelsene skal være på. Språket skal angis som [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
+  sprakkode6392: String
 }
 
 type StudieprogramCampus implements Node {
@@ -8184,11 +8556,11 @@ type Tekstkategorinavn {
 
 "Telefonnummer med landnummer"
 type Telefon implements Node {
-  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Denne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   id: ID!
-  "1-3-sifret landnummer for telefonnummeret, med plusstegn foran\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "1-3-sifret landnummer for telefonnummeret, med plusstegn foran\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   landnummer: String
-  "Selve telefonnummeret\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  "Selve telefonnummeret\n  \nDenne funksjonaliteten er en del av [beta](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-i-beta)."
   nummer: String!
 }
 
@@ -8771,17 +9143,125 @@ type Utdanningsplan implements Node {
   "Unik identifikator for utdanningsplan for student på studieprogram\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   id: ID!
   "Studieoppbygningsdeler tilknyttet studentens utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  oppbygning: [StudieoppbygningsdelIUtdanningsplan!]!
+  oppbygning(first: Int = 10 after: String): UtdanningsplanOppbygningConnection
   "Emner tilknyttet studentens utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  emner: [EmneIUtdanningsplan!]!
+  emner(first: Int = 10 after: String): UtdanningsplanEmnerConnection
   "Eksternresultater tilknyttet studentens utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  eksternresultater: [EksternresultatIUtdanningsplan!]!
+  eksternresultater(first: Int = 10 after: String): UtdanningsplanEksternresultaterConnection
   "Realkompetanser tilknyttet studentens utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  realkompetanser: [RealkompetanseIUtdanningsplan!]!
+  realkompetanser(first: Int = 10 after: String): UtdanningsplanRealkompetanserConnection
   "Utdanningsplanelementer tilknyttet studentens utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  utdanningsplanelementer: [UtdanningsplanelementIUtdanningsplan!]!
+  utdanningsplanelementer(first: Int = 10 after: String): UtdanningsplanUtdanningsplanelementerConnection
   "Planinformasjon tilknyttet studentens utdanningsplan\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
-  planinformasjon: [PlaninformasjonIUtdanningsplan]!
+  planinformasjon(first: Int = 10 after: String): UtdanningsplanPlaninformasjonConnection
+}
+
+type UtdanningsplanEksternresultaterConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [UtdanningsplanEksternresultaterConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [EksternresultatIUtdanningsplan!]!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type UtdanningsplanEksternresultaterConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: EksternresultatIUtdanningsplan
+}
+
+type UtdanningsplanEmnerConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [UtdanningsplanEmnerConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [EmneIUtdanningsplan!]!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type UtdanningsplanEmnerConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: EmneIUtdanningsplan
+}
+
+type UtdanningsplanOppbygningConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [UtdanningsplanOppbygningConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [StudieoppbygningsdelIUtdanningsplan!]!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type UtdanningsplanOppbygningConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: StudieoppbygningsdelIUtdanningsplan
+}
+
+type UtdanningsplanPlaninformasjonConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [UtdanningsplanPlaninformasjonConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [PlaninformasjonIUtdanningsplan]!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type UtdanningsplanPlaninformasjonConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: PlaninformasjonIUtdanningsplan
+}
+
+type UtdanningsplanRealkompetanserConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [UtdanningsplanRealkompetanserConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [Realkompetanse!]!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type UtdanningsplanRealkompetanserConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: Realkompetanse
+}
+
+type UtdanningsplanUtdanningsplanelementerConnection {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  edges: [UtdanningsplanUtdanningsplanelementerConnectionEdge]
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  pageInfo: PageInfo
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  nodes: [UtdanningsplanelementIUtdanningsplan!]!
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  totalCount: Int
+}
+
+type UtdanningsplanUtdanningsplanelementerConnectionEdge {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  cursor: String
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  node: UtdanningsplanelementIUtdanningsplan
 }
 
 "Utdanningsplanelementer er standardiserte elementer som kan puttes inn i en students utdanningsplan. Ofte er dette et midlertidig element som senere skal erstattes av emner eller eksternresultater."
@@ -8851,6 +9331,15 @@ type UtdanningsplanelementIUtdanningsplan implements Node {
   merknad: Utdanningsplanelementmerknad
   "Periode for utdanningsplanelement\n  \nDenne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
   periode: Utdanningsplanelementterminperiode
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  planlagtVekting: UtdanningsplanelementIUtdanningsplanPlanlagtVekting
+}
+
+type UtdanningsplanelementIUtdanningsplanPlanlagtVekting {
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  verdi: BigDecimal
+  "Denne funksjonaliteten er en del av [experimental](https:\/\/studieadministrasjon.sikt.no\/apier\/#kontrakt-for-apier-med-status-eksperimentelt)."
+  vektingstype: Vektingstype
 }
 
 type UtdanningsplanelementUrler {
@@ -8871,11 +9360,17 @@ type Utdanningsplanelementmerknad {
 "Navn på utdanningsplanelement oppgitt med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-språkkode"
 type UtdanningsplanelementnavnAlleSprak {
   "Bokmål"
-  nob: String
+  nob: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nb i stedet.")
   "Nynorsk"
-  nno: String
+  nno: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nn i stedet.")
   "Engelsk"
-  eng: String
+  eng: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk en i stedet.")
+  "Bokmål"
+  nb: String
+  "Nynorsk"
+  nn: String
+  "Engelsk"
+  en: String
 }
 
 "Periode for utdanningsplanelement"
@@ -9146,11 +9641,17 @@ type Vektingstype implements Node {
 "Vektingstypenavn oppgitt med [ISO-639-2](https:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php)-kode"
 type VektingstypenavnAlleSprak {
   "Bokmål"
-  nob: String
+  nob: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nb i stedet.")
   "Nynorsk"
-  nno: String
+  nno: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk nn i stedet.")
   "Engelsk"
-  eng: String
+  eng: String @deprecated(reason: "Dette feltet vil bli fjernet etter 31. mars 2026. Bruk en i stedet.")
+  "Bokmål"
+  nb: String
+  "Nynorsk"
+  nn: String
+  "Engelsk"
+  en: String
 }
 
 input VektingstyperFilterInput {
