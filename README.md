@@ -25,6 +25,7 @@ Edit "appsettings.json" and add your API key. Make sure you don't commit the API
 
 Download GraphQL schema and create the Strawberryshake client  
 ```
+cd .\FsGraphqlDemo\
 dotnet graphql update -x X-Gravitee-Api-Key=API-KEY
 ```
 
