@@ -30,7 +30,7 @@ if (apiKey == "ADD-API-KEY")
 ArgumentNullException.ThrowIfNull(baseUrl, nameof(baseUrl));
 ArgumentNullException.ThrowIfNull(apiKey, nameof(apiKey));
 
-Console.WriteLine($"""Use FsGraphQl API {name} endpoint: "{baseUrl}" with api key "{apiKey[..4]}..." """);
+Console.WriteLine($"""Use FsGraphQl API {name} endpoint: "{baseUrl}" with api key "{apiKey[..3]}...{apiKey[^3..]}" """);
 
 // Set up the FS client for GraphQl
 var serviceCollection = new ServiceCollection();
