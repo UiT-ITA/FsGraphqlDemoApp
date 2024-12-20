@@ -39,37 +39,37 @@ dotnet build
 
 ### Help screen
 ```
-.\bin\Debug\net8.0\FsGraphqlDemo.exe --help
+.\bin\Debug\net9.0\FsGraphqlDemo.exe --help
 ```
 
 
 ### Search FS for all students (takes a long time)
 ```
-.\bin\Debug\net8.0\FsGraphqlDemo.exe students  
+.\bin\Debug\net9.0\FsGraphqlDemo.exe students  
 ```
 
 
 ### Search FS for all events of type SEMESTERREGISTRERT
 ```
-.\bin\Debug\net8.0\FsGraphqlDemo.exe events  
+.\bin\Debug\net9.0\FsGraphqlDemo.exe events  
 ```
 
 
 ### Search FS for students by username (comma separated list when searching for multiple students)
 ```
-.\bin\Debug\net8.0\FsGraphqlDemo.exe feide username1,username2  
+.\bin\Debug\net9.0\FsGraphqlDemo.exe feide username1,username2  
 ```
 
 
 ### Search FS for semesterRegistreringer this semster
 ```
-.\bin\Debug\net8.0\FsGraphqlDemo.exe semreg  
+.\bin\Debug\net9.0\FsGraphqlDemo.exe semreg  
 ```
 
 
 ### Search FS for semesterregistreringer and check them against the student events (experimental)
 ```
-.\bin\Debug\net8.0\FsGraphqlDemo.exe checkSemreg  
+.\bin\Debug\net9.0\FsGraphqlDemo.exe checkSemreg  
 ```
 
 ### Switch FS endpoints
@@ -77,5 +77,5 @@ dotnet build
 Use the flag --endpoint to switch between TESt and PROD endpoints. TEST is the default.
 
 ```
-.\bin\Debug\net8.0\FsGraphqlDemo.exe feide tle001 --endpoint prod
+.\bin\Debug\net9.0\FsGraphqlDemo.exe feide tle001 --endpoint prod
 ```
