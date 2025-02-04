@@ -8,7 +8,6 @@
         after: $after
     ) {
         nodes {
-            id
             tidspunkt
             hendelsestype
             ... on StudentSemesterregistrert {
