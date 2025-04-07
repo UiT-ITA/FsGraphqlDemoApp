@@ -39,6 +39,7 @@ public class FsGetEvents
         {
             Console.WriteLine($"GetStudentEvents({numCalls++}) after={after} - Found {count}");
             var result = await client.QueryStudentEvents.ExecuteAsync("186", after, cancellationToken);
+            result.EnsureNoErrors();
             after = result.Data?.Studenthendelser?.PageInfo?.EndCursor;
             results.Add(result);
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using StrawberryShake;
 using System.Diagnostics;
 
 namespace FsGraphqlDemo;
@@ -34,6 +35,7 @@ public class FsGetStudents
         {
             Console.WriteLine($"GetStudents({count}) - Found = {results.Count}");
             var result = await client.QueryStudents.ExecuteAsync("186", after, cancellationToken);
+            result.EnsureNoErrors();
             after = result.Data?.Studenter?.PageInfo?.EndCursor;
 
             var studentList = result.Data?.Studenter?.Nodes;

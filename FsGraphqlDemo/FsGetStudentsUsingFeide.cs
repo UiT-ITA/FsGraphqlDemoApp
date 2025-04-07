@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using StrawberryShake;
 
 namespace FsGraphqlDemo;
 
@@ -32,7 +33,7 @@ public class FsGetStudentsUsingFeide
 
         List<IStudentcardinfo> results = [];
         var result1 = await client.QueryStudentsUsingFeide.ExecuteAsync("186", userList, cancellationToken);
-
+        result1.EnsureNoErrors();
         var studentCardList = result1.Data?.StudenterGittFeideBrukere;
         if (studentCardList is not null)
         {
