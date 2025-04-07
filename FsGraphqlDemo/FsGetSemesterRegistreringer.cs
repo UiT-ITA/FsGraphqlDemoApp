@@ -77,8 +77,11 @@ public class FsGetSemesterRegistreringer
         {
             foreach (var edge in result.Data?.Semesterregistreringer?.Edges ?? [])
             {
+                if (edge?.Node?.Student is null)
+                    continue;
+
                 ++count;
-                var student = edge?.Node?.Student;
+                var student = edge.Node.Student;
                 ArgumentNullException.ThrowIfNull(student);
                 ArgumentNullException.ThrowIfNull(student.Navn);
                 ArgumentNullException.ThrowIfNull(student.PersonProfil);
@@ -87,8 +90,8 @@ public class FsGetSemesterRegistreringer
                 Console.WriteLine($"[{count,4}] {name,-35}  User={student.FeideBruker}"
                     + $"  Fnr={student.PersonProfil.Fodselsnummer}"
                     + $"  Snr={student.Studentnummer}"
-                    + $"  Ltid={student?.LanetakerId}");
-                foreach (var studentCard in edge?.Node?.Student.Studentkort ?? [])
+                    + $"  Ltid={student.LanetakerId}");
+                foreach (var studentCard in edge.Node.Student.Studentkort ?? [])
                 {
                     ArgumentNullException.ThrowIfNull(studentCard);
 
