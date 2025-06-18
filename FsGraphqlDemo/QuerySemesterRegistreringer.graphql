@@ -1,13 +1,13 @@
-query QuerySemesterRegistreringer(
+﻿query QuerySemesterRegistreringer(
     $institusjon: String!
-    $termin: [SemesterregistreringsterminInput!]
+    $terminkoder:[SemesterregistreringsterminkodeInput!]
     $studentnumre: [String!]
     $after: String
 ) {
     semesterregistreringer(
         filter: {
             eierOrganisasjonskode: $institusjon
-            terminer: $termin
+            terminkoder: $terminkoder
             studentnumre: $studentnumre
             erSemesterregistrert: true
             harBetaltSemesteravgift: true

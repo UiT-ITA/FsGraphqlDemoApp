@@ -30,7 +30,7 @@ public class FsGetSemesterRegistreringer
                 username += "@uit.no";
             }
         }
-        SemesterregistreringsterminInput termin = new()
+        SemesterregistreringsterminkodeInput termin = new()
         {
             Arstall = DateTime.Now.Year,
             Betegnelse = DateTime.Now.Month < 7

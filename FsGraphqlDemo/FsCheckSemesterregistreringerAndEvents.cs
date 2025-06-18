@@ -94,7 +94,7 @@ public class FsCheckSemesterregistreringerAndEvents
             maximum = studentNumberList.Count;
         }
 
-        SemesterregistreringsterminInput termin = new()
+        SemesterregistreringsterminkodeInput termin = new()
         {
             Arstall = DateTime.Now.Year,
             Betegnelse = DateTime.Now.Month < 7
