@@ -18,7 +18,7 @@ internal static class ShowInfo
                 continue;
             }
             string name = $"{student.Navn.Fornavn} {student.Navn.Etternavn}";
-            Console.WriteLine($"[{count}] {name,-35}  Feide={student.FeideBruker}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
+            Console.WriteLine($"[{count}] {name,-35}  Feide={student.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
         }
     }
 
@@ -34,7 +34,7 @@ internal static class ShowInfo
             ArgumentNullException.ThrowIfNull(student.PersonProfil);
 
             string name = $"{student.Navn.Fornavn} {student.Navn.Etternavn}";
-            Console.WriteLine($"[{count}] {name,-35}  Feide={student.FeideBruker}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
+            Console.WriteLine($"[{count}] {name,-35}  Feide={student.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
             foreach (var card in student?.Studentkort ?? [])
             {
                 Console.WriteLine($"  studentkort: {card?.Studentkortnummer,-10} Periode: {card?.Gyldighetsperiode?.FraDato} -> {card?.Gyldighetsperiode?.TilDato}");
