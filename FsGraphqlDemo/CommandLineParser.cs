@@ -13,121 +13,168 @@ public class CommandLineParser
 
     public async Task<int> CommandLineParse(string[] args, CancellationToken cancellationToken)
     {
-        var verbosityOption = new Option<Verbosity>(
-               name: "--verbosity",
-               getDefaultValue: () => Verbosity.Normal,
-               description: "Verbosity level: Quiet, Normal, Detailed");
+        Option<Verbosity> verbosityOption = new("--verbosity", "-v")
+        {
+            Description = "Verbosity level: Quiet, Normal, Detailed",
+            DefaultValueFactory = parseResult => Verbosity.Normal,
+        };
 
-        var endpointOption = new Option<string>(
-            "--endpoint",
-            "Which API endpoint to use, prod or test")
-                .FromAmong("prod", "test");
+        var endpointOption = new Option<string>("--endpoint")
+        {
+            Description = "Which API endpoint to use, prod or test",
+        };
+        endpointOption.Validators.Add(result =>
+        {
+            var val = result.GetValue(endpointOption) ?? "";
+            if (!val.Equals("prod", StringComparison.OrdinalIgnoreCase) &&
+                !val.Equals("test", StringComparison.OrdinalIgnoreCase))
+            {
+                result.AddError("Wrong API endpoint");
+            }
+        });
 
-        var maximumOption = new Option<int>(
-            name: "--maximum",
-            getDefaultValue: () => int.MaxValue,
-            description: "Maximum number of rows to process");
+        var maximumOption = new Option<int>("--maximum")
+        {
+            Description = "Maximum number of rows to process",
+            DefaultValueFactory = parseResult => int.MaxValue
 
-        var filterOption = new Option<string>(
-            name: "--filter",
-            description: "Employee Number / Fnr (11 digit Norwegian fødselsnummer) to search for");
+        };
 
-        var userNameOption = new Option<string>(
-            name: "--user",
-            description: "User Name to search for");
+        var filterOption = new Option<string>("--filter")
+        {
+            Description = "Employee Number / Fnr (11 digit Norwegian fødselsnummer) to search for",
+        };
 
-        var usersArg = new Argument<string>(
-            name: "Users to search for",
-            description: "Username of users to search for. Use comma to separate users");
+        var userNameOption = new Option<string>("--user")
+        {
+            Description = "User Name to search for",
+        };
 
-        var studentNumberOption = new Option<string>(
-            name: "--student",
-            description: "Student number to search for");
+        var usersArg = new Argument<string>("Users to search for")
+        {
+            Description = "Username of users to search for. Use comma to separate users",
 
-        var stedkodeOption = new Option<string>(
-            name: "--stedkode",
-            description: "Specific stedkode to search for. Default is to search for all users");
+        };
+
+        var studentNumberOption = new Option<string>("--student")
+        {
+            Description = "Student number to search for",
+        };
+
+        var stedkodeOption = new Option<string>("--stedkode")
+        {
+            Description = "Specific stedkode to search for. Default is to search for all users",
+        };
 
         var rootCommand = new RootCommand("Command line program to run FS GraphQL queries");
 
         var studentsCommand = new Command("students", "Query all students from FS");
-        studentsCommand.AddOption(verbosityOption);
-        studentsCommand.AddOption(endpointOption);
-        studentsCommand.AddOption(maximumOption);
-        studentsCommand.AddOption(filterOption);
-        studentsCommand.AddOption(userNameOption);
-        studentsCommand.AddOption(stedkodeOption);
-        rootCommand.AddCommand(studentsCommand);
+        studentsCommand.Options.Add(verbosityOption);
+        studentsCommand.Options.Add(endpointOption);
+        studentsCommand.Options.Add(maximumOption);
+        studentsCommand.Options.Add(filterOption);
+        studentsCommand.Options.Add(userNameOption);
+        studentsCommand.Options.Add(stedkodeOption);
+        rootCommand.Subcommands.Add(studentsCommand);
 
         var feideCommand = new Command("feide", "Query for specific students using feideId");
-        feideCommand.AddOption(verbosityOption);
-        feideCommand.AddOption(endpointOption);
-        feideCommand.AddOption(maximumOption);
-        feideCommand.AddOption(filterOption);
-        feideCommand.AddArgument(usersArg);
-        rootCommand.AddCommand(feideCommand);
+        feideCommand.Options.Add(verbosityOption);
+        feideCommand.Options.Add(endpointOption);
+        feideCommand.Options.Add(maximumOption);
+        feideCommand.Options.Add(filterOption);
+        feideCommand.Arguments.Add(usersArg);
+        rootCommand.Subcommands.Add(feideCommand);
 
         var semesterRegCommand = new Command("semreg", "Query semesterRegistreringer for students");
-        semesterRegCommand.AddOption(verbosityOption);
-        semesterRegCommand.AddOption(endpointOption);
-        semesterRegCommand.AddOption(maximumOption);
-        semesterRegCommand.AddOption(filterOption);
-        semesterRegCommand.AddOption(userNameOption);
-        semesterRegCommand.AddOption(studentNumberOption);
-        semesterRegCommand.AddOption(stedkodeOption);
-        rootCommand.AddCommand(semesterRegCommand);
+        semesterRegCommand.Options.Add(verbosityOption);
+        semesterRegCommand.Options.Add(endpointOption);
+        semesterRegCommand.Options.Add(maximumOption);
+        semesterRegCommand.Options.Add(filterOption);
+        semesterRegCommand.Options.Add(userNameOption);
+        semesterRegCommand.Options.Add(studentNumberOption);
+        semesterRegCommand.Options.Add(stedkodeOption);
+        rootCommand.Subcommands.Add(semesterRegCommand);
 
         var eventsCommand = new Command("events", "Query studentHendelser for students");
-        eventsCommand.AddOption(verbosityOption);
-        eventsCommand.AddOption(endpointOption);
-        eventsCommand.AddOption(maximumOption);
-        eventsCommand.AddOption(filterOption);
-        eventsCommand.AddOption(userNameOption);
-        rootCommand.AddCommand(eventsCommand);
+        eventsCommand.Options.Add(verbosityOption);
+        eventsCommand.Options.Add(endpointOption);
+        eventsCommand.Options.Add(maximumOption);
+        eventsCommand.Options.Add(filterOption);
+        eventsCommand.Options.Add(userNameOption);
+        rootCommand.Subcommands.Add(eventsCommand);
 
         var checkSemregCommand = new Command("checkSemreg", "Check all Semesterregistreringer against studentHendelser");
-        checkSemregCommand.AddOption(verbosityOption);
-        checkSemregCommand.AddOption(endpointOption);
-        checkSemregCommand.AddOption(maximumOption);
-        checkSemregCommand.AddOption(filterOption);
-        checkSemregCommand.AddOption(userNameOption);
-        rootCommand.AddCommand(checkSemregCommand);
+        checkSemregCommand.Options.Add(verbosityOption);
+        checkSemregCommand.Options.Add(endpointOption);
+        checkSemregCommand.Options.Add(maximumOption);
+        checkSemregCommand.Options.Add(filterOption);
+        checkSemregCommand.Options.Add(userNameOption);
+        rootCommand.Subcommands.Add(checkSemregCommand);
 
-        studentsCommand.SetHandler(async (verbosity, maximum, fnr, username, stedkode) =>
+        studentsCommand.SetAction((ParseResult parseResult, CancellationToken token) =>
         {
             FsGetStudents getStudents = new(_services);
-            await getStudents.Run(verbosity, maximum, fnr, username, stedkode, cancellationToken);
-        },
-        verbosityOption, maximumOption, filterOption, userNameOption, stedkodeOption);
+            return getStudents.Run(
+                parseResult.GetValue(verbosityOption),
+                parseResult.GetValue(maximumOption),
+                parseResult.GetValue(filterOption),
+                parseResult.GetValue(userNameOption),
+                parseResult.GetValue(stedkodeOption),
+                cancellationToken);
+        });
 
-        feideCommand.SetHandler(async (verbosity, maximum, fnr, users, stedkode) =>
+
+        feideCommand.SetAction((ParseResult parseResult, CancellationToken token) =>
         {
             FsGetStudentsUsingFeide getStudents = new(_services);
-            await getStudents.Run(verbosity, maximum, fnr, users, stedkode, cancellationToken);
-        },
-        verbosityOption, maximumOption, filterOption, usersArg, stedkodeOption);
+            return getStudents.Run(
+                parseResult.GetValue(verbosityOption),
+                parseResult.GetValue(maximumOption),
+                parseResult.GetValue(filterOption),
+                parseResult.GetValue(usersArg),
+                parseResult.GetValue(stedkodeOption),
+                cancellationToken);
+        });
 
-        semesterRegCommand.SetHandler(async (verbosity, maximum, fnr, username, studentNumber, stedkode) =>
+        semesterRegCommand.SetAction((ParseResult parseResult, CancellationToken token) =>
         {
             FsGetSemesterRegistreringer query = new(_services);
-            await query.Run(verbosity, maximum, fnr, username, studentNumber, stedkode, cancellationToken);
-        },
-        verbosityOption, maximumOption, filterOption, userNameOption, studentNumberOption, stedkodeOption);
+            return query.Run(
+                parseResult.GetValue(verbosityOption),
+                parseResult.GetValue(maximumOption),
+                parseResult.GetValue(filterOption),
+                parseResult.GetValue(userNameOption),
+                parseResult.GetValue(studentNumberOption),
+                parseResult.GetValue(stedkodeOption),
+                cancellationToken);
+        });
 
-        eventsCommand.SetHandler(async (verbosity, maximum, fnr, username, studentNumber, stedkode) =>
+        eventsCommand.SetAction((ParseResult parseResult, CancellationToken token) =>
         {
             FsGetEvents query = new(_services);
-            await query.Run(verbosity, maximum, fnr, username, studentNumber, stedkode, cancellationToken);
-        },
-        verbosityOption, maximumOption, filterOption, userNameOption, studentNumberOption, stedkodeOption);
+            return query.Run(
+                parseResult.GetValue(verbosityOption),
+                parseResult.GetValue(maximumOption),
+                parseResult.GetValue(filterOption),
+                parseResult.GetValue(userNameOption),
+                parseResult.GetValue(studentNumberOption),
+                parseResult.GetValue(stedkodeOption),
+                cancellationToken);
+        });
 
-        checkSemregCommand.SetHandler(async (verbosity, maximum, fnr, username, studentNumber, stedkode) =>
+        checkSemregCommand.SetAction((ParseResult parseResult, CancellationToken token) =>
         {
             FsCheckSemesterregistreringerAndEvents query = new(_services);
-            await query.Run(verbosity, maximum, fnr, username, studentNumber, stedkode, cancellationToken);
-        },
-        verbosityOption, maximumOption, filterOption, userNameOption, studentNumberOption, stedkodeOption);
+            return query.Run(
+                parseResult.GetValue(verbosityOption),
+                parseResult.GetValue(maximumOption),
+                parseResult.GetValue(filterOption),
+                parseResult.GetValue(userNameOption),
+                parseResult.GetValue(studentNumberOption),
+                parseResult.GetValue(stedkodeOption),
+                cancellationToken);
+        });
 
-        return await rootCommand.InvokeAsync(args);
+        return await rootCommand.Parse(args).InvokeAsync(cancellationToken: cancellationToken);
     }
 }
