@@ -71,7 +71,7 @@ public class FsCheckSemesterregistreringerAndEvents
         }
         if (!found)
         {
-            Console.WriteLine($"No event found for student Snr {student.Studentnummer} Feide {student?.FeideBruker} - {student?.Navn?.Fornavn} {student?.Navn?.Etternavn}");
+            Console.WriteLine($"No event found for student Snr {student.Studentnummer} Feide {student?.FeideBruker} - {student?.PersonProfil?.Navn?.Fornavn} {student?.PersonProfil?.Navn?.Etternavn}");
         }
         return found;
     }
