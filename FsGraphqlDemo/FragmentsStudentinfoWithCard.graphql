@@ -5,10 +5,10 @@
     studentnummer
     personProfil {
         fodselsnummer
-    }
-    navn {
-        fornavn
-		etternavn
+        navn {
+            fornavn
+		    etternavn
+        }
     }
     studentkort {
         id

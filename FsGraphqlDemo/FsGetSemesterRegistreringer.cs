@@ -83,10 +83,10 @@ public class FsGetSemesterRegistreringer
                 ++count;
                 var student = edge.Node.Student;
                 ArgumentNullException.ThrowIfNull(student);
-                ArgumentNullException.ThrowIfNull(student.Navn);
                 ArgumentNullException.ThrowIfNull(student.PersonProfil);
+                ArgumentNullException.ThrowIfNull(student.PersonProfil.Navn);
 
-                string name = $"{student.Navn.Fornavn} {student.Navn.Etternavn}";
+                string name = $"{student.PersonProfil.Navn.Fornavn} {student.PersonProfil.Navn.Etternavn}";
                 Console.WriteLine($"[{count,4}] {name,-35}  User={student.FeideBruker}"
                     + $"  Fnr={student.PersonProfil.Fodselsnummer}"
                     + $"  Snr={student.Studentnummer}"

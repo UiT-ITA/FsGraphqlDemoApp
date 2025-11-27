@@ -5,9 +5,9 @@ fragment studentinfo on StudentVedLarested {
     studentnummer
     personProfil {
         fodselsnummer
-    }
-    navn {
-        fornavn
-		etternavn
+        navn {
+            fornavn
+		    etternavn
+        }
     }
 }

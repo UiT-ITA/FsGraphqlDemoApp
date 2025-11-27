@@ -74,15 +74,15 @@ public class FsGetEvents
 
                     var student = node.Student;
                     ArgumentNullException.ThrowIfNull(student);
-                    ArgumentNullException.ThrowIfNull(student.Navn);
                     ArgumentNullException.ThrowIfNull(student.PersonProfil);
+                    ArgumentNullException.ThrowIfNull(student.PersonProfil.Navn);
 
                     if (username is not null && student.FeideBruker != username)
                         continue;
 
                     if (verbosity >= Verbosity.Detailed)
                     {
-                        string name = $"{student.Navn.Fornavn} {student.Navn.Etternavn}";
+                        string name = $"{student.PersonProfil.Navn.Fornavn} {student.PersonProfil.Navn.Etternavn}";
                         Console.WriteLine($"[{count,4}] {name,-35}  Tid={node.Tidspunkt}  User={student.FeideBruker}"
                             + $"  Fnr={student.PersonProfil.Fodselsnummer}"
                             + $"  Snr={student.Studentnummer}"
