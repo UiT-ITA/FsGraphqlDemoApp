@@ -10,14 +10,14 @@ internal static class ShowInfo
             var student = result as IStudentinfo;
             ++count;
             ArgumentNullException.ThrowIfNull(student);
-            ArgumentNullException.ThrowIfNull(student.Navn);
             ArgumentNullException.ThrowIfNull(student.PersonProfil);
+            ArgumentNullException.ThrowIfNull(student.PersonProfil.Navn);
 
             if (filter is not null && (student.PersonProfil.Fodselsnummer != filter && student.Studentnummer != filter))
             {
                 continue;
             }
-            string name = $"{student.Navn.Fornavn} {student.Navn.Etternavn}";
+            string name = $"{student.PersonProfil.Navn.Fornavn} {student.PersonProfil.Navn.Etternavn}";
             Console.WriteLine($"[{count}] {name,-35}  Feide={student.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
         }
     }
@@ -30,10 +30,10 @@ internal static class ShowInfo
             var student = result as IStudentcardinfo;
             ++count;
             ArgumentNullException.ThrowIfNull(student);
-            ArgumentNullException.ThrowIfNull(student.Navn);
             ArgumentNullException.ThrowIfNull(student.PersonProfil);
+            ArgumentNullException.ThrowIfNull(student.PersonProfil.Navn);
 
-            string name = $"{student.Navn.Fornavn} {student.Navn.Etternavn}";
+            string name = $"{student.PersonProfil.Navn.Fornavn} {student.PersonProfil.Navn.Etternavn}";
             Console.WriteLine($"[{count}] {name,-35}  Feide={student.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
             foreach (var card in student?.Studentkort ?? [])
             {
