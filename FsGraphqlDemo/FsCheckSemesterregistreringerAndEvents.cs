@@ -36,7 +36,10 @@ public class FsCheckSemesterregistreringerAndEvents
                 if (student is not null)
                 {
                     if (!FindEventForStudent(allEvents, student))
+                    {
+                        Console.WriteLine($"{count,5} No event found for student Snr {student.Studentnummer} Feide {student?.FeideBruker} - {student?.PersonProfil?.Navn?.Fornavn} {student?.PersonProfil?.Navn?.Etternavn}");
                         count++;
+                    }
 
                     //        var event1 = allEvents.FirstOrDefault(
                     //x => x.Data?.Studenthendelser?.Edges?.Any(y => y?.Node?.S Student?.Studentnummer == student.Studentnummer) ?? false);
@@ -69,10 +72,7 @@ public class FsCheckSemesterregistreringerAndEvents
                 }
             }
         }
-        if (!found)
-        {
-            Console.WriteLine($"No event found for student Snr {student.Studentnummer} Feide {student?.FeideBruker} - {student?.PersonProfil?.Navn?.Fornavn} {student?.PersonProfil?.Navn?.Etternavn}");
-        }
+
         return found;
     }
 
