@@ -18,7 +18,7 @@ internal static class ShowInfo
                 continue;
             }
             string name = $"{student.PersonProfil.Navn.Fornavn} {student.PersonProfil.Navn.Etternavn}";
-            Console.WriteLine($"[{count}] {name,-35}  Feide={student.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
+            Console.WriteLine($"[{count}] {name,-35}  Feide={student.PersonProfil.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
         }
     }
 
