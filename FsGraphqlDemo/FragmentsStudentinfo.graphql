@@ -1,9 +1,9 @@
-fragment studentinfo on StudentVedLarested {
+﻿fragment studentinfo on StudentVedLarested {
     id
-    feideBruker
     lanetakerId
     studentnummer
     personProfil {
+        feideBruker
         fodselsnummer
         navn {
             fornavn
