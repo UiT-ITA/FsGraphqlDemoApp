@@ -1,4 +1,4 @@
-# FsGraphqlDemoApp
+﻿# FsGraphqlDemoApp
 
 ## Simple application to show how to use the FS GraphQl API using the Strawberry Shake library
 
@@ -23,10 +23,10 @@ Click on the API and you will se your API key.
 
 Edit "appsettings.json" and add your API key. Make sure you don't commit the API key to github
 
-Download GraphQL schema and create the Strawberryshake client  
+Download latest GraphQL schema from SIKT and create the Strawberryshake client  
 ```
 cd .\FsGraphqlDemo\
-dotnet graphql update -x X-Gravitee-Api-Key=API-KEY
+curl -o .\schema.graphql https://api.fellesstudentsystem.no/specs/schema-exp.graphql
 ```
 
 
