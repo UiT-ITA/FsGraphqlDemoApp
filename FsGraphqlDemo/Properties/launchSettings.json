@@ -2,7 +2,7 @@
   "profiles": {
     "FsCommandLineApp": {
       "commandName": "Project",
-      "commandLineArgs": "events"
+      "commandLineArgs": "--prod events"
     }
   }
 }
