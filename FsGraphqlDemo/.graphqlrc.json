@@ -1,6 +1,6 @@
-{
+﻿{
   "schema": "schema.graphql",
-  "documents": "**/*.graphql",
+  "documents": "Queries/*.graphql",
   "extensions": {
     "strawberryShake": {
       "name": "FsClient",
