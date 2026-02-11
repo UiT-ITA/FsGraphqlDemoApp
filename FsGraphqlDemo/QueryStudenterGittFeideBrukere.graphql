@@ -1,4 +1,4 @@
-query QueryStudentsUsingFeide(
+﻿query QueryStudentsUsingFeide(
     $eierInstitusjonsnummer: String!
     $feideBrukere: [String!]!
 ) {
