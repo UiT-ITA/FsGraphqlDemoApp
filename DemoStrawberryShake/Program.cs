@@ -3,7 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = new ConfigurationBuilder()
-    .AddJsonFile($"appsettings.json", true, true);
+    .AddJsonFile("appsettings.json", true, true)
+    .AddUserSecrets("d7b464be-c667-4934-8d1a-43b8015027b0");
 
 var config = builder.Build();
 
@@ -21,9 +22,9 @@ for (var i = 0; i < args.Length - 1; i++)
 var baseUrl = config[$"FsGraphql{name}:baseUrl"];
 var apiKey = config[$"FsGraphql{name}:apiKey"];
 
-if (apiKey == "ADD-API-KEY")
+if (string.IsNullOrEmpty(apiKey) || apiKey == "ADD-API-KEY")
 {
-    Console.WriteLine("""Please add your API key to the "appsettings.json" file""");
+    Console.WriteLine("""Please add your API key to the "appsettings.json" file or your user secrets""");
     return;
 }
 
