@@ -1,4 +1,4 @@
-﻿using FsGraphqlDemo;
+﻿using DemoStrawberryShake;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

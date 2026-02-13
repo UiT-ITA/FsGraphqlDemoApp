@@ -1,6 +1,7 @@
-﻿using System.CommandLine;
+﻿using DemoStrawberryShake;
+using System.CommandLine;
 
-namespace FsGraphqlDemo;
+namespace DemoStrawberryShake;
 
 public class CommandLineParser
 {

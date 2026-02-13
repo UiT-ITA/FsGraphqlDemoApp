@@ -1,4 +1,4 @@
-﻿namespace FsGraphqlDemo;
+﻿namespace DemoStrawberryShake;
 
 internal static class ShowInfo
 {

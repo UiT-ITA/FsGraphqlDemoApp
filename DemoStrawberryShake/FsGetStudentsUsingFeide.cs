@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using StrawberryShake;
 
-namespace FsGraphqlDemo;
+namespace DemoStrawberryShake;
 
 public class FsGetStudentsUsingFeide
 {

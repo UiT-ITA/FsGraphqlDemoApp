@@ -1,4 +1,4 @@
-﻿namespace FsGraphqlDemo;
+﻿namespace DemoStrawberryShake;
 
 public enum Verbosity
 {

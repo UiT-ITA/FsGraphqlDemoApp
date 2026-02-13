@@ -2,7 +2,7 @@
 using StrawberryShake;
 using System.Diagnostics;
 
-namespace FsGraphqlDemo;
+namespace DemoStrawberryShake;
 
 public class FsGetStudents
 {
