@@ -2,5 +2,6 @@
   <Folder Name="/Solution Items/">
     <File Path="README.md" />
   </Folder>
-  <Project Path="FsGraphqlDemo/FsGraphqlDemo.csproj" />
+  <Project Path="DemoGraphQLClient/DemoGraphQLClient.csproj" />
+  <Project Path="DemoStrawberryShake/DemoStrawberryShake.csproj" />
 </Solution>
