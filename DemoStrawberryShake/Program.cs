@@ -41,6 +41,7 @@ serviceCollection
     {
         client.BaseAddress = new Uri(baseUrl);
         client.DefaultRequestHeaders.Add("X-Gravitee-Api-Key", apiKey);
+        client.DefaultRequestHeaders.Add("Feature-flags", "beta,experimental");
     });
 
 IServiceProvider services = serviceCollection.BuildServiceProvider();
