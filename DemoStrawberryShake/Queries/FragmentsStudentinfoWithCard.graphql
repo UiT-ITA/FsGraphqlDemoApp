@@ -16,7 +16,7 @@
         status {
             id
             kode
-            aktivtKort
+            erAktivtKort
         }
         gyldighetsperiode {
             fraDato
