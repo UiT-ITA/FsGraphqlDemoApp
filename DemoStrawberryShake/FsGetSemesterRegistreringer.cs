@@ -15,7 +15,7 @@ public class FsGetSemesterRegistreringer
     public async Task<int> Run(
         Verbosity verbosity,
         int maximum,
-        string? filter,
+        string? fnr,
         string? username,
         string? studentNumber,
         string? stedkode,
@@ -97,13 +97,13 @@ public class FsGetSemesterRegistreringer
 
                     Console.Write($"     * KortNr ");
                     var currentColor = Console.ForegroundColor;
-                    if (studentCard.Status?.AktivtKort == false)
+                    if (studentCard.Status?.ErAktivtKort == false)
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                     else
                         Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Write(studentCard.Studentkortnummer);
                     Console.ForegroundColor = currentColor;
-                    Console.WriteLine($"  Aktivt {studentCard.Status?.AktivtKort}"
+                    Console.WriteLine($"  Aktivt {studentCard.Status?.ErAktivtKort}"
                         + $"  Dato {studentCard.Gyldighetsperiode?.FraDato} - {studentCard.Gyldighetsperiode?.TilDato}");
                 }
                 Console.WriteLine($"");
