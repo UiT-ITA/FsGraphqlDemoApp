@@ -1,7 +1,11 @@
-﻿query QueryStudents($eierInstitusjonsnummer: String!, $after: String) {
+﻿query QueryStudentsTermin($eierInstitusjonsnummer: String!, $terminId: ID!, $after: String) {
     studenter(
         filter: { 
             eierOrganisasjonskode: $eierInstitusjonsnummer
+            emnerITerminer: {
+                termin: $terminId,
+                harEmneStudierett: true
+            }
         }  
         first: 1000
         after: $after
@@ -13,6 +17,8 @@
                     kull {
                         id
                         erAktiv
+                        skalEksporteresTilLms
+                        lmsRomkode
                     }
                 }
             }

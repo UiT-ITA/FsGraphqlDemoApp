@@ -1,0 +1,72 @@
+﻿query QueryEmner(
+    $institusjon: String!
+    $count: Int
+    $after: String
+    $emnekode: [String!]
+    $arstall: Int!
+    $terminbetegnelse: EmneIkkeUtloptITerminTerminbetegnelse!
+) {
+    emnerV2(
+        filter: {
+            eierOrganisasjonskode: $institusjon
+            emnekoder: $emnekode
+            ikkeUtloptITermin: {
+                arstall: $arstall
+                terminbetegnelse: $terminbetegnelse
+            }
+        }
+        first: $count
+        after: $after
+    ) {
+        nodes {
+            ...FragmentEmne
+        }
+        totalCount
+        pageInfo {
+            hasPreviousPage
+            hasNextPage
+            startCursor
+            endCursor
+        }
+    }
+}
+fragment FragmentEmne on Emne {
+    id
+    kode
+    versjonskode
+    navnAlleSprak {
+        nb
+    }
+    praksistype {
+        id
+        kode
+        navn {
+            nb
+        }
+    }
+    studieansvarligOrganisasjonsenhet {
+        id
+        fakultet {fakultetsnummer}
+        gruppenummer
+        instituttnummer
+    }
+    administrativtAnsvarligOrganisasjonsenhet {
+        id
+        fakultet {fakultetsnummer}
+        gruppenummer
+        instituttnummer
+    }
+    campuser {
+        gyldighetsperiode {
+            tilTermin {
+                arstall
+                betegnelse {
+                    kode
+                }
+            }
+        }
+        campus {
+            kode
+        }
+    }
+}

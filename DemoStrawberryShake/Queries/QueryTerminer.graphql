@@ -1,0 +1,22 @@
+﻿query QueryTerminer(
+    $institusjon: String!, 
+    $arstall: [Int!]
+)
+{
+    terminer(filter: {
+        eierOrganisasjonskode: $institusjon, 
+        arstall: $arstall})
+    {
+        nodes {
+            id
+            arstall
+            betegnelse {
+                id
+                kode
+                navnAlleSprak {
+                    nb
+                }
+            }
+        }
+    }
+}

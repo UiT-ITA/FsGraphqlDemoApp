@@ -1,0 +1,11 @@
+﻿query QueryTerminbetegnelser($eierOrganisasjonskode: String!) {
+  terminbetegnelser(filter: { 
+    eierOrganisasjonskode: $eierOrganisasjonskode 
+  })
+  {
+    nodes {
+      id
+      kode
+    }
+  }
+}
