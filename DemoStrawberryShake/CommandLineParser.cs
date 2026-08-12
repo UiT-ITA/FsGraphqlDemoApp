@@ -41,7 +41,7 @@ public class CommandLineParser
 
         };
 
-        var filterOption = new Option<string>("--filter")
+        var fnrOption = new Option<string>("--fnr")
         {
             Description = "Employee Number / Fnr (11 digit Norwegian fødselsnummer) to search for",
         };
@@ -62,6 +62,11 @@ public class CommandLineParser
             Description = "Student number to search for",
         };
 
+        var studentIdOption = new Option<string>("--id")
+        {
+            Description = "Student id to search for",
+        };
+
         var stedkodeOption = new Option<string>("--stedkode")
         {
             Description = "Specific stedkode to search for. Default is to search for all users",
@@ -73,8 +78,10 @@ public class CommandLineParser
         studentsCommand.Options.Add(verbosityOption);
         studentsCommand.Options.Add(endpointOption);
         studentsCommand.Options.Add(maximumOption);
-        studentsCommand.Options.Add(filterOption);
+        studentsCommand.Options.Add(fnrOption);
         studentsCommand.Options.Add(userNameOption);
+        studentsCommand.Options.Add(studentNumberOption);
+        studentsCommand.Options.Add(studentIdOption);
         studentsCommand.Options.Add(stedkodeOption);
         rootCommand.Subcommands.Add(studentsCommand);
 
@@ -82,7 +89,7 @@ public class CommandLineParser
         feideCommand.Options.Add(verbosityOption);
         feideCommand.Options.Add(endpointOption);
         feideCommand.Options.Add(maximumOption);
-        feideCommand.Options.Add(filterOption);
+        feideCommand.Options.Add(fnrOption);
         feideCommand.Arguments.Add(usersArg);
         rootCommand.Subcommands.Add(feideCommand);
 
@@ -90,7 +97,7 @@ public class CommandLineParser
         semesterRegCommand.Options.Add(verbosityOption);
         semesterRegCommand.Options.Add(endpointOption);
         semesterRegCommand.Options.Add(maximumOption);
-        semesterRegCommand.Options.Add(filterOption);
+        semesterRegCommand.Options.Add(fnrOption);
         semesterRegCommand.Options.Add(userNameOption);
         semesterRegCommand.Options.Add(studentNumberOption);
         semesterRegCommand.Options.Add(stedkodeOption);
@@ -100,7 +107,7 @@ public class CommandLineParser
         eventsCommand.Options.Add(verbosityOption);
         eventsCommand.Options.Add(endpointOption);
         eventsCommand.Options.Add(maximumOption);
-        eventsCommand.Options.Add(filterOption);
+        eventsCommand.Options.Add(fnrOption);
         eventsCommand.Options.Add(userNameOption);
         rootCommand.Subcommands.Add(eventsCommand);
 
@@ -108,7 +115,7 @@ public class CommandLineParser
         checkSemregCommand.Options.Add(verbosityOption);
         checkSemregCommand.Options.Add(endpointOption);
         checkSemregCommand.Options.Add(maximumOption);
-        checkSemregCommand.Options.Add(filterOption);
+        checkSemregCommand.Options.Add(fnrOption);
         checkSemregCommand.Options.Add(userNameOption);
         rootCommand.Subcommands.Add(checkSemregCommand);
 
@@ -118,8 +125,10 @@ public class CommandLineParser
             return getStudents.Run(
                 parseResult.GetValue(verbosityOption),
                 parseResult.GetValue(maximumOption),
-                parseResult.GetValue(filterOption),
+                parseResult.GetValue(fnrOption),
                 parseResult.GetValue(userNameOption),
+                parseResult.GetValue(studentNumberOption),
+                parseResult.GetValue(studentIdOption),
                 parseResult.GetValue(stedkodeOption),
                 cancellationToken);
         });
@@ -131,7 +140,7 @@ public class CommandLineParser
             return getStudents.Run(
                 parseResult.GetValue(verbosityOption),
                 parseResult.GetValue(maximumOption),
-                parseResult.GetValue(filterOption),
+                parseResult.GetValue(fnrOption),
                 parseResult.GetValue(usersArg),
                 parseResult.GetValue(stedkodeOption),
                 cancellationToken);
@@ -143,7 +152,7 @@ public class CommandLineParser
             return query.Run(
                 parseResult.GetValue(verbosityOption),
                 parseResult.GetValue(maximumOption),
-                parseResult.GetValue(filterOption),
+                parseResult.GetValue(fnrOption),
                 parseResult.GetValue(userNameOption),
                 parseResult.GetValue(studentNumberOption),
                 parseResult.GetValue(stedkodeOption),
@@ -156,7 +165,7 @@ public class CommandLineParser
             return query.Run(
                 parseResult.GetValue(verbosityOption),
                 parseResult.GetValue(maximumOption),
-                parseResult.GetValue(filterOption),
+                parseResult.GetValue(fnrOption),
                 parseResult.GetValue(userNameOption),
                 parseResult.GetValue(studentNumberOption),
                 parseResult.GetValue(stedkodeOption),
@@ -169,7 +178,7 @@ public class CommandLineParser
             return query.Run(
                 parseResult.GetValue(verbosityOption),
                 parseResult.GetValue(maximumOption),
-                parseResult.GetValue(filterOption),
+                parseResult.GetValue(fnrOption),
                 parseResult.GetValue(userNameOption),
                 parseResult.GetValue(studentNumberOption),
                 parseResult.GetValue(stedkodeOption),
