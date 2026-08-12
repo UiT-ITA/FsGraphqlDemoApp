@@ -15,7 +15,7 @@ public class FsCheckSemesterregistreringerAndEvents
     public async Task<int> Run(
         Verbosity verbosity,
         int maximum,
-        string? filter,
+        string? fnr,
         string? username,
         string? studentNumber,
         string? stedkode,
