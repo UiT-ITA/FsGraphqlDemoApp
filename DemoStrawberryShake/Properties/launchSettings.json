@@ -1,8 +1,12 @@
 {
   "profiles": {
-    "FsCommandLineApp": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "Students": {
       "commandName": "Project",
-      "commandLineArgs": "--prod events"
+      "commandLineArgs": " students --endpoint prod --id OTk6MTg2LDEzNTcxOTY"
     }
   }
 }
