@@ -87,16 +87,16 @@ internal class GetEmner(GraphQLHttpClient graphQLClient)
     public bool HasNextPage { get; private set; }
     public int QueryCount { get; set; } = 1000;
 
-    public async Task QueryEmner(string institusjon, string[]? emnekode, int arstall, string terminbetegnelse)
+    public async Task QueryEmner(string institusjon, string[]? emnekode, int arstall, string terminbetegnelse, CancellationToken cancellationToken)
     {
         do
         {
-            bool status = await DoQuery(institusjon, QueryCount, EndCursor, emnekode, arstall, terminbetegnelse);
+            bool status = await DoQuery(institusjon, QueryCount, EndCursor, emnekode, arstall, terminbetegnelse, cancellationToken);
         } while (HasNextPage);
         Console.WriteLine($"Antall emner med praksis: {CountEmnerMedPraksis}");
     }
 
-    private async Task<bool> DoQuery(string institusjon, int count, string? endCursor, string[]? emnekode, int arstall, string terminbetegnelse)
+    private async Task<bool> DoQuery(string institusjon, int count, string? endCursor, string[]? emnekode, int arstall, string terminbetegnelse, CancellationToken cancellationToken)
     {
         var QueryGetEmner = new GraphQLRequest
         {
@@ -115,7 +115,7 @@ internal class GetEmner(GraphQLHttpClient graphQLClient)
 
         try
         {
-            var graphQLResponse = await graphQLClient.SendQueryAsync<EmnerData>(QueryGetEmner);
+            var graphQLResponse = await graphQLClient.SendQueryAsync<EmnerData>(QueryGetEmner, cancellationToken);
 
             ArgumentNullException.ThrowIfNull(graphQLResponse, nameof(graphQLResponse));
             if (graphQLResponse.Errors != null)

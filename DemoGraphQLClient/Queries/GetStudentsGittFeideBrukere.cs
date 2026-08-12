@@ -47,7 +47,7 @@ public class GetStudentsGittFeideBrukere(GraphQLHttpClient graphQLClient)
             }
             """;
 
-    public async Task QueryStudentGittFeideBrukere(string institusjon, string[] feideBrukere)
+    public async Task QueryStudentGittFeideBrukere(string institusjon, string[] feideBrukere, CancellationToken cancellationToken)
     {
         var QueryGetStudentsGittFeideBrukere = new GraphQLRequest
         {
@@ -62,7 +62,7 @@ public class GetStudentsGittFeideBrukere(GraphQLHttpClient graphQLClient)
 
         try
         {
-            var graphQLResponse = await graphQLClient.SendQueryAsync<StudenterGittFeideBrukeretData>(QueryGetStudentsGittFeideBrukere);
+            var graphQLResponse = await graphQLClient.SendQueryAsync<StudenterGittFeideBrukeretData>(QueryGetStudentsGittFeideBrukere, cancellationToken);
 
             //ArgumentNullException.ThrowIfNull(graphQLResponse, nameof(graphQLResponse));
             if (graphQLResponse.Errors != null)
@@ -84,16 +84,18 @@ public class GetStudentsGittFeideBrukere(GraphQLHttpClient graphQLClient)
                 Console.WriteLine("Feil ved GetStudentInfo returnerte ingen");
             }
 
+            int index = 0;
             foreach (var student in graphQLResponse.Data.StudenterGittFeideBrukere)
             {
                 if (student is null)
                 {
-                    Console.WriteLine($"Student not found");
+                    Console.WriteLine($"Student not found: {feideBrukere[index]}");
                 }
                 else
                 {
                     Console.WriteLine($"Studentnummer: {student.Studentnummer}, FeideBruker: {student.PersonProfil.FeideBruker}");
                 }
+                index++;
             }
         }
         catch (Exception e)

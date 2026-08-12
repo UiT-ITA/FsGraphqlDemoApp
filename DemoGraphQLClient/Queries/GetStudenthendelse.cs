@@ -76,7 +76,7 @@ internal class GetStudenthendelse(GraphQLHttpClient graphQLClient)
             }
             """;
 
-    public async Task QueryStudentHendelser(string institusjon)
+    public async Task QueryStudentHendelser(string institusjon, CancellationToken cancellationToken)
     {
         var QueryGetStudentsGittFeideBrukere = new GraphQLRequest
         {
@@ -90,7 +90,7 @@ internal class GetStudenthendelse(GraphQLHttpClient graphQLClient)
 
         try
         {
-            var graphQLResponse = await graphQLClient.SendQueryAsync<StudenthendelserData>(QueryGetStudentsGittFeideBrukere);
+            var graphQLResponse = await graphQLClient.SendQueryAsync<StudenthendelserData>(QueryGetStudentsGittFeideBrukere, cancellationToken);
 
             ArgumentNullException.ThrowIfNull(graphQLResponse, nameof(graphQLResponse));
             if (graphQLResponse.Errors != null)
