@@ -57,7 +57,7 @@ public class FsGetSemesterRegistreringer
         {
             studentNumberList.ForEach(Console.WriteLine);
             Console.WriteLine($"GetSemesterRegistreringer({numCalls++}) - Found = {count}");
-            var result = await client.QuerySemesterRegistreringer.ExecuteAsync("186", [termin], studentNumberList, after, cancellationToken);
+            var result = await client.QuerySemesterRegistreringer.ExecuteAsync(Settings.FsInstitusjon, [termin], studentNumberList, after, cancellationToken);
             result.EnsureNoErrors();
             after = result.Data?.Semesterregistreringer?.PageInfo?.EndCursor;
 

@@ -106,7 +106,7 @@ public class FsCheckSemesterregistreringerAndEvents
         {
             studentNumberList.ForEach(Console.WriteLine);
             Console.WriteLine($"GetSemesterRegistreringer({count})");
-            var result = await client.QuerySemesterRegistreringer.ExecuteAsync("186", [termin], studentNumberList, after, cancellationToken);
+            var result = await client.QuerySemesterRegistreringer.ExecuteAsync(Settings.FsInstitusjon, [termin], studentNumberList, after, cancellationToken);
             result.EnsureNoErrors();
             after = result.Data?.Semesterregistreringer?.PageInfo?.EndCursor;
             if (result is not null)
@@ -127,7 +127,7 @@ public class FsCheckSemesterregistreringerAndEvents
         do
         {
             Console.WriteLine($"GetStudentEvents({count})");
-            var result = await client.QueryStudentEvents.ExecuteAsync("186", after, cancellationToken);
+            var result = await client.QueryStudentEvents.ExecuteAsync(Settings.FsInstitusjon, after, cancellationToken);
             result.EnsureNoErrors();
             after = result.Data?.Studenthendelser?.PageInfo?.EndCursor;
             results.Add(result);

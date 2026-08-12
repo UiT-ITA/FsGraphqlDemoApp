@@ -32,7 +32,7 @@ public class FsGetStudentsUsingFeide
         userList.ForEach(Console.WriteLine);
 
         List<IStudentcardinfo> results = [];
-        var result1 = await client.QueryStudentsUsingFeide.ExecuteAsync("186", userList, cancellationToken);
+        var result1 = await client.QueryStudentsUsingFeide.ExecuteAsync(Settings.FsInstitusjon, userList, cancellationToken);
         result1.EnsureNoErrors();
         var studentCardList = result1.Data?.StudenterGittFeideBrukere;
         if (studentCardList is not null)

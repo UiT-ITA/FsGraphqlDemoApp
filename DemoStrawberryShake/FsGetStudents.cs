@@ -33,8 +33,7 @@ public class FsGetStudents
         int count = 0;
         do
         {
-            Console.WriteLine($"GetStudents({count}) - Found = {results.Count}");
-            var result = await client.QueryStudents.ExecuteAsync("186", after, cancellationToken);
+            var result = await client.QueryStudents.ExecuteAsync(Settings.FsInstitusjon, after, cancellationToken);
             result.EnsureNoErrors();
             after = result.Data?.Studenter?.PageInfo?.EndCursor;
 
