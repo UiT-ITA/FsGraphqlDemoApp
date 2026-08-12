@@ -15,7 +15,7 @@ public class FsGetStudentsUsingFeide
     public async Task<int> Run(
         Verbosity verbosity,
         int maximum,
-        string? filter,
+        string? fnr,
         string? users,
         string? stedkode,
         CancellationToken cancellationToken)
