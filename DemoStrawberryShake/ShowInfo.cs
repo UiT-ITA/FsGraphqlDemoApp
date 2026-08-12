@@ -2,7 +2,7 @@
 
 internal static class ShowInfo
 {
-    public static void ShowUserInfo(List<IStudentinfo> results, string? filter)
+    public static void ShowUserInfo(List<IStudentinfo> results, string? filter, string? studentId)
     {
         int count = 0;
         foreach (var result in results)
@@ -17,8 +17,12 @@ internal static class ShowInfo
             {
                 continue;
             }
+            if (!string.IsNullOrEmpty(studentId) && student.Id != studentId)
+            {
+                continue;
+            }
             string name = $"{student.PersonProfil.Navn.Fornavn} {student.PersonProfil.Navn.Etternavn}";
-            Console.WriteLine($"[{count}] {name,-35}  Feide={student.PersonProfil.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}");
+            Console.WriteLine($"[{count}] {name,-35}  Feide={student.PersonProfil.FeideBruker,-16}  Fnr={student.PersonProfil.Fodselsnummer}  Snr={student.Studentnummer}  Ltid={student?.LanetakerId}  Id={student.Id}");
         }
     }
 
